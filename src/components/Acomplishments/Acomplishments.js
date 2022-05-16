@@ -6,6 +6,7 @@ import { Box, Boxes, BoxNum, BoxText } from './AcomplishmentsStyles';
 const data = [
   { number: "Honor List", text: 'Placed on the Deans Honor List at AUB' },
   { number: "Scholarship", text: 'Full scholarship covered by USAID.', },
+  { number: "20+", text: 'Students Tutored (Math, Programming)', },
 ];
 
 const Acomplishments = () => (
