@@ -6,20 +6,28 @@ import Technologies from '../components/Technologies/Technologies';
 import Timeline from '../components/TimeLine/TimeLine';
 import { Layout } from '../layout/Layout';
 import { Section } from '../styles/GlobalComponents';
+import Head from 'next/head'
 
 const Home = () => {
   return (
-    <Layout>
-      <Section grid>
-        <Hero />
-        <BgAnimation />
-      </Section>
-      <Projects />
-      <Technologies />
-      <Timeline />
-      <Acomplishments />
-    </Layout>
-  );
+    <div>
+      <Head>
+        <title>Melhem Rahmeh's Portfolio</title>
+        <meta property="og:title" content="My page title" key="title" />
+      </Head>
+      <link rel="icon" href="/favicon.ico" />
+      <Layout>
+        <Section grid>
+          <Hero />
+          <BgAnimation />
+        </Section>
+        <Projects />
+        <Technologies />
+        <Timeline />
+        <Acomplishments />
+      </Layout>
+
+    </div>);
 };
 
 export default Home;
