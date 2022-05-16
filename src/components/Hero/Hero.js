@@ -5,7 +5,7 @@ import Button from '../../styles/GlobalComponents/Button';
 import { LeftSection } from './HeroStyles';
 
 const Hero = () => (
-  <Section row nopadding id="about">
+  <Section row nopadding>
     <LeftSection>
       <SectionTitle main center>
         Hello I'm Melhem Rahmeh, <br />
