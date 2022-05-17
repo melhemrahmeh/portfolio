@@ -1,44 +1,102 @@
-import React from 'react';
-import { DiFirebase, DiReact, DiZend } from 'react-icons/di';
+import React, { useState, useEffect } from "react";
 import { Section, SectionDivider, SectionText, SectionTitle } from '../../styles/GlobalComponents';
-import { List, ListContainer, ListItem, ListParagraph, ListTitle } from './ContactStyles';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import emailjs from 'emailjs-com';
 
-const Contact = () => (
+import { toast } from "react-toastify";
+// import 'react-toastify/dist/ReactToastify.css';
+
+// toast.configure()
+
+function Contact() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
+
+
+    const handleSubmit = (e) => {
+        const values = {
+            name: name,
+            email: email,
+            message: message
+        };
+        e.preventDefault();
+        emailjs.send("service_5lbrexw", "template_iv5pb2p", values, 'UbFpX8EG6MxSiWGwd')
+            .then(response => {
+                console.log('SUCCESS!', response);
+            }, error => {
+                console.log('FAILED...', error);
+            });
+    }
+ var notify = () => toast.success(`Message sent for Melhem Rahmeh!`);
+
+    console.log(name);
+    console.log(email);
+    console.log(message);
+    return (
     <Section id="contact">
         <br />
         <SectionTitle>Contact Me</SectionTitle>
         <SectionText>
             <div>
                 Interested in working together?<br />
-                Or perhaps you would just like to connect? So kindly leave a message bellow.
+                Or perhaps you would just like to connect? So kindly leave a message bellow. <br />
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <Form>
-                    <FormGroup>
-                        <Label for="exampleEmail">Name:</Label>
-                        <br />
-                        <Input type="text" name="email" id="exampleEmail" placeholder="Enter your Name" />
-                    </FormGroup>
+                <form>
+                    <div class="form-group">
+                        <label for="pwd">Name:</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="pwd"
+                            placeholder="Enter your Name:"
+                            name="name"
+                            style={{ fontSize: "23px", width: "370px", height: "35px" }}
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                    </div>
+                    <div><br /></div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            placeholder="Enter email"
+                            name="email"
+                            style={{ fontSize: "23px", width: "370px", height: "35px" }}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <div><br /></div>
+                    <div class="form-group">
+                        <label for="pwd">Message:</label>
+                        <textarea
+                            name=""
+                            id=""
+                            class="form-control"
+                            cols="30"
+                            rows="10"
+                            style={{ fontSize: "23px", width: "370px", height: "150px" }}
+                            placeholder="Feel Free to Enter Your Message!"
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+
+                        ></textarea>
+                    </div>
                     <br />
-                    <FormGroup>
-                        <Label for="exampleEmail">Email:</Label>
-                        <br />
-                        <Input type="email" name="email" id="exampleEmail" placeholder="Enter your Email" />
-                        <br />
-                    </FormGroup>
-                    <br />
-                    <FormGroup>
-                        <Label for="exampleText">Message:</Label>
-                        <br />
-                        <Input type="textarea" name="text" id="exampleText" rows="5" placeholder="Feel free to write your Message!" />
-                    </FormGroup>
-                    <Button>Submit</Button>
-                </Form>
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-light" style={{ fontSize: "23px", width: "100px", height: "45px", margin: "auto" }} type="submit"
+                                onClick={(e) => {notify(), handleSubmit(e) }}
+                        ><b>Send</b></button>
+                    </div>
+                </form>
             </div>
         </SectionText>
-        {/* <SectionDivider colorAlt /> */}
     </Section>
-);
+)
+};
 
 export default Contact;
