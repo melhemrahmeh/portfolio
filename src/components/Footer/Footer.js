@@ -9,12 +9,19 @@ const Footer = () => {
     <FooterWrapper>
       <LinkList>
         <LinkColumn>
+          <LinkTitle>Address</LinkTitle>
+          <LinkItem>
+            Beirut, Lebanon
+          </LinkItem>
+        </LinkColumn>
+
+        <LinkColumn>
           <LinkTitle>Call</LinkTitle>
           <LinkItem href="tel:314-343-3432">+961 71 589 832</LinkItem>
         </LinkColumn>
         <LinkColumn>
           <LinkTitle>Email</LinkTitle>
-          <LinkItem href="mailto:contact@jsmastery.com">
+          <LinkItem href="mailto:melhem.rahmeh@outlook.com">
             melhem.rahmeh@outlook.com
           </LinkItem>
         </LinkColumn>
