@@ -41,5 +41,5 @@ export const TimeLineData = [
   { year: 2019, text: 'Wrote my first line of code in C++', },
   { year: 2020, text: 'Started my Python and Django Learning Journey, and completed my first website using vanilla Javascript and Django', },
   { year: 2021, text: 'Started my Java & Problem Solving Journey', },
-  { year: 2022, text: 'Build a solid knowledge of React JS, Node JS and Machine Learning', },
+  { year: 2022, text: 'Build a solid knowledge of React JS, Node JS and Machine Learning, and landed my first internship as a Front End Developer, then my first job as a Full Time C++ Developer', },
 ];
