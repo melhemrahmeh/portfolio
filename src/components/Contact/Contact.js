@@ -46,7 +46,7 @@ function Contact() {
                                 id="pwd"
                                 placeholder="Enter your Name:"
                                 name="name"
-                                style={{ fontSize: "23px", width: "370px", height: "35px" }}
+                                style={{ fontSize: "23px", width: "550px", height: "35px" , borderRadius: "10px"  }}
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                             />
@@ -60,7 +60,7 @@ function Contact() {
                                 id="email"
                                 placeholder="Enter your Email:"
                                 name="email"
-                                style={{ fontSize: "23px", width: "370px", height: "35px" }}
+                                style={{ fontSize: "23px", width: "550px", height: "35px", borderRadius: "10px" }}
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
@@ -74,7 +74,7 @@ function Contact() {
                                 class="form-control"
                                 cols="30"
                                 rows="10"
-                                style={{ fontSize: "23px", width: "370px", height: "150px" }}
+                                style={{ fontSize: "23px", width: "550px", height: "150px" , borderRadius: "10px"}}
                                 placeholder="Feel Free to Enter Your Message!"
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
