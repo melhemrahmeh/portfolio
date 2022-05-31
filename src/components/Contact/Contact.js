@@ -58,7 +58,7 @@ function Contact() {
                                 type="email"
                                 class="form-control"
                                 id="email"
-                                placeholder="Enter email"
+                                placeholder="Enter your Email:"
                                 name="email"
                                 style={{ fontSize: "23px", width: "370px", height: "35px" }}
                                 value={email}
