@@ -34,7 +34,7 @@ function Contact() {
             <SectionText>
                 <div>
                     Interested in working together?<br />
-                    Or perhaps you would just like to connect? So kindly leave a message bellow. <br />
+                    Or perhaps you would just like to connect? So kindly leave a message below. <br /><br/>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <form>
@@ -84,7 +84,7 @@ function Contact() {
                         <br />
                         <div class="d-flex justify-content-center">
                             <button className="btn btn-light"
-                                style={{ fontSize: "23px", width: "100px", height: "45px", margin: "auto" }}
+                                style={{ fontSize: "23px", width: "100px", height: "45px", margin: "auto", borderRadius: "8px" }}
                                 onClick={(e) => { notify(), handleSubmit(e) }}>
                                 <b>Send</b>
                             </button>
