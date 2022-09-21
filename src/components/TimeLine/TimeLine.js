@@ -46,7 +46,7 @@ const Timeline = () => {
     <Section id="about">
       <SectionTitle>About Me</SectionTitle>
       <SectionText>
-        Second year computer science scholarship student at the American University of Beirut. <br /> Skilled in programming, problem solving, and currently seeking an internship or job where I will be able to strengthen my programming and tutoring skills.
+        Senior computer science scholarship student at the American University of Beirut. <br /> Skilled in programming, problem solving, and currently working as Full Stack developer at Asset Science LLC where I am able to strengthen my various programming skills.
       </SectionText>
       <CarouselContainer ref={carouselRef} onScroll={handleScroll}>
         <>
