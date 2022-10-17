@@ -1,15 +1,5 @@
 export const projects = [
   {
-    title: "Wen Rayhin",
-    description:
-      "Using React Native, firebase , and firestore, I build Wen Rayhin, an event booking app to helps people book events in Lebanon they are willing to go to. It's still in progress.",
-    image: "/images/wenrayhin.png",
-    tags: ["React Native", "Firebase", "Firestore"],
-    source: "https://github.com/melhemrahmeh/wenrayhin",
-    visit: "https://github.com/melhemrahmeh/wenrayhin",
-    id: 0,
-  },
-  {
     title: "My Clinic",
     description:
       "Using React JS, Django , and MySQL, I build MyClinic,a web application to helps you organize dentist visits from the comfort of your home. We aim to help you book your appointments, view your operations, prices, and after visit summaries, and contact your clinic for any assistance.",
