@@ -50,7 +50,7 @@ const Technologies = () => (
         <ListContainer>
           <ListTitle>Back-End</ListTitle>
           <ListParagraph>
-            Firesbase, Azure Function in C#, <br />
+            Firebase, Azure Function in C#, <br />
             Express.js, Node.js, Django
           </ListParagraph>
         </ListContainer>
