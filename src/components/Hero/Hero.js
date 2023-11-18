@@ -16,13 +16,15 @@ const Hero = () => (
         And welcome there!
       </SectionTitle>
       <SectionText>
-        Being a tech enthusiast since a young age, I started learning to program
-        in High school then chose to major in Computer Science in college.{" "}
-        <br /> <br />I am highly interested in Software Engineering, and
-        currently strengthening my Web Development and Software Engineering
-        practices, and looking into Machine Learning. <br /> <br /> I am a
-        Software Developer at Asset Science LLC working with React, Redux,
-        Electron and C++.
+        Computer Science graduate from the American University of Beirut with a
+        strong foundation in Full Stack Development, new technologies and tools.
+        I have been honing my skills since high school and am proud to be among
+        the 60 high school graduates in Lebanon to receive the prestigious USAID
+        scholarship for undergraduate studies at AUB.
+        <br /> I did 2 web development internships and landed 2 professional
+        jobs as a Software Engineer and then as a Business Analyst during my
+        university years, culminating in a successful transition to Murex as a
+        DevOps Engineer post-graduation.
       </SectionText>
       <Button
         onClick={() =>

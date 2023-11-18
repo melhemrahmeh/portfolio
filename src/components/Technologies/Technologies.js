@@ -38,7 +38,8 @@ const Technologies = () => (
         <ListContainer>
           <ListTitle>Front-End</ListTitle>
           <ListParagraph>
-            React.js, React Native, Next.js, HTML, CSS, JavaScript, Bootstrap
+            React.js, Next.js, HTML, CSS, JavaScript, Bootstrap, React Native ,
+            Flutter
           </ListParagraph>
         </ListContainer>
       </ListItem>
@@ -50,8 +51,8 @@ const Technologies = () => (
         <ListContainer>
           <ListTitle>Back-End</ListTitle>
           <ListParagraph>
-            Firebase, Azure Function in C#, <br />
-            Express.js, Node.js, Django
+            Firebase, Azure Function in C#, ASP.NET 6<br />
+            Express.js, Node.js, Django, Fast API
           </ListParagraph>
         </ListContainer>
       </ListItem>
