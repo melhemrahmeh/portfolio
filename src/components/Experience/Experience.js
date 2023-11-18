@@ -6,7 +6,8 @@ import {
   ExternalLinks,
   GridContainer,
   HeaderThree,
-  HeaderTwo,
+  HeaderFive,
+  HeaderFour,
   Hr,
   Tag,
   TagList,
@@ -35,22 +36,23 @@ const Experience = () => (
           <BlogCard key={i}>
             <TitleContent>
               <HeaderThree title>{p.title}</HeaderThree>
-              <Hr />
-              <HeaderTwo title>{p.company}</HeaderTwo>
+              <HeaderFour title>
+                {p.company}  |  {p.date}
+              </HeaderFour>
               <Hr />
             </TitleContent>
             <CardInfo className="card-info">
               <ul style={{ color: "white" }}>{bulletPoints}</ul>
             </CardInfo>
-            {/* <div>
+            <div>
               <Hr />
-              <TagList>
+              {/* <TagList>
                 {p.tags.map((t, i) => {
                   return <Tag key={i}>{t}</Tag>;
                 })}
-              </TagList>
+              </TagList> */}
             </div>
-            <UtilityList>
+            {/* <UtilityList>
               <ExternalLinks href={p.visit}>Code</ExternalLinks>
               <ExternalLinks href={p.source}>Source</ExternalLinks>
             </UtilityList> */}

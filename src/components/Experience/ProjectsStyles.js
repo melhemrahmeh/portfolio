@@ -44,7 +44,7 @@ export const HeaderThree = styled.h3`
   font-size: ${(props) => (props.title ? "3rem" : "2rem")};
 `;
 
-export const HeaderTwo = styled.h4`
+export const HeaderFour = styled.h4`
   font-weight: 500;
   letter-spacing: 2px;
   color: #9cc9e3;
@@ -52,6 +52,13 @@ export const HeaderTwo = styled.h4`
   font-size: ${(props) => (props.title ? "2.5rem" : "1.75rem")};
 `;
 
+export const HeaderFive = styled.h5`
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: #9cc9e3;
+  padding: 0.5rem 0;
+  font-size: ${(props) => (props.title ? "2rem" : "1rem")};
+`;
 
 export const Hr = styled.hr`
   width: 50px;
