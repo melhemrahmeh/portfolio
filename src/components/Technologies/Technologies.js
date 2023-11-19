@@ -7,6 +7,7 @@ import {
   DiGitMerge,
   DiStreamline,
   DiPython,
+  DiDocker,
 } from "react-icons/di";
 import {
   Section,
@@ -28,9 +29,24 @@ const Technologies = () => (
     <SectionTitle>Technologies</SectionTitle>
     <SectionText>
       I have worked with a lot of technologies. <br />
-      From Java, Python, C++, Machine Learning to Web Development!
+      From Java, Python, C++, Machine Learning, Web Development to DevOps
+      Engineering!
     </SectionText>
     <List>
+      <ListItem>
+        <picture>
+          <DiStreamline size="3rem" />
+        </picture>
+        <ListContainer>
+          <ListTitle>Programming</ListTitle>
+          <ListParagraph>
+            Proficient in Python, Java, Javascript, Object Oriented Programming,
+            Algorithms, Data Structures, Problem Solving.
+            <br /> Worked with C++ , C#, Assembly (MIPS) , Dart, Groovy, GoLang
+          </ListParagraph>
+        </ListContainer>
+      </ListItem>
+
       <ListItem>
         <picture>
           <DiReact size="3rem" />
@@ -38,8 +54,11 @@ const Technologies = () => (
         <ListContainer>
           <ListTitle>Front-End</ListTitle>
           <ListParagraph>
-            React.js, Next.js, HTML, CSS, JavaScript, Bootstrap, React Native ,
-            Flutter
+            React.js, Next.js, HTML, CSS, JavaScript
+            <br /> Bootstrap, JQuery , Tailwind, and State Management (Redux,
+            Zustand)
+            <br />
+            Mobile Dev (React Native , Flutter)
           </ListParagraph>
         </ListContainer>
       </ListItem>
@@ -49,10 +68,11 @@ const Technologies = () => (
           <DiFirebase size="3rem" />
         </picture>
         <ListContainer>
-          <ListTitle>Back-End</ListTitle>
+          <ListTitle>Back-End & API</ListTitle>
           <ListParagraph>
-            Firebase, Azure Function in C#, ASP.NET 6<br />
-            Express.js, Node.js, Django, Fast API
+            Firebase, Azure Function in C#, AWS Lambda in JS
+            <br />
+            Express.js, Node.js, Nest.js, Django, Fast API
           </ListParagraph>
         </ListContainer>
       </ListItem>
@@ -63,7 +83,7 @@ const Technologies = () => (
         <ListContainer>
           <ListTitle>Databases</ListTitle>
           <ListParagraph>
-            MySQL, PostgreSQL, MongoBD, SQL Server, Firestore
+            MySQL, PostgreSQL, MongoBD, SQL Server, Sybase SQL, Firestore
           </ListParagraph>
         </ListContainer>
       </ListItem>
@@ -76,33 +96,24 @@ const Technologies = () => (
           <ListTitle>Tools</ListTitle>
           <ListParagraph>
             Agile Development (Scrum), REST APIs, Unit Testing (Junit, Google
-            Test) , Github, Bitbucket, DevOps, CI/CD, Github Actions, Azure
-            DevOps, Netlify, Vercel, Heroku.
+            Test) , Github, Bitbucket, , Azure DevOps, Netlify, Vercel, Heroku,
+            ServiceNow, ActiveMQ, Machine Learning
           </ListParagraph>
         </ListContainer>
       </ListItem>
       <ListItem>
         <picture>
-          <DiPython size="3rem" />
+          <DiDocker size="3rem" />
         </picture>
         <ListContainer>
-          <ListTitle>Machine Learning</ListTitle>
+          <ListTitle>DevOps & Cloud</ListTitle>
           <ListParagraph>
-            Python, Numpy, SKlearn, Pandas, Keras, TensorFlow, Neural Networks,
-            Natural Language Processing, Deep Learning
-          </ListParagraph>
-        </ListContainer>
-      </ListItem>
-      <ListItem>
-        <picture>
-          <DiStreamline size="3rem" />
-        </picture>
-        <ListContainer>
-          <ListTitle>Programming</ListTitle>
-          <ListParagraph>
-            Proficient in Python, Java, Javascript, Object Oriented Programming,
-            Algorithms, Data Structures, Problem Solving.
-            <br /> Worked with C++ , C#, Assembly (MIPS)
+            Linux, Bash Scripting, Micorservices
+            <br />
+            AWS, Azure, Oracle Cloud, Digital Ocean
+            <br />
+            Docker, Kubernetes, Jenkins, Ansible, Splunk
+            <br /> Git, Github Actions, Netlify, Vercel, Heroku, Github Actions
           </ListParagraph>
         </ListContainer>
       </ListItem>

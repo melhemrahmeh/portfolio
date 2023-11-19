@@ -67,10 +67,10 @@ const Timeline = () => {
     <Section id="about">
       <SectionTitle>About Me</SectionTitle>
       <SectionText>
-        Senior computer science scholarship student at the American University
-        of Beirut. <br /> Skilled in programming, problem solving, and currently
-        working as Full Stack developer at Asset Science LLC where I am able to
-        strengthen my various programming skills.
+        Computer Science graduate from American University of Beirut. <br />
+        Skilled in programming, problem solving, and currently a DevOps Engineer
+        at Murex where I am able to strengthen my various programming skills,
+        and exposed to the infrastructure and operations word.
       </SectionText>
       <CarouselContainer ref={carouselRef} onScroll={handleScroll}>
         <>
