@@ -35,6 +35,7 @@ const Experience = () => (
         return (
           <BlogCard key={i}>
             <TitleContent>
+            <Img style={{"backgroundColor": "white"}} src={p.image} />
               <HeaderThree title>{p.title}</HeaderThree>
               <HeaderFour title>
                 {p.company}  |  {p.date}

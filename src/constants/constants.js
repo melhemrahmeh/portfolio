@@ -2,6 +2,7 @@ export const experience = [
   {
     title: "DevOps Engineer",
     company: "Murex",
+    image: "/images/mx.PNG",
     date : "June 2023 - Present",
     description:
       "Troubleshooting across Unix/Linux environments and became proficient with Sybase, PostgreSQL, MSSQL, and Oracle databases as well as debugging Java & Angular codebases.\nActively engaged in a Scaled Agile Framework, participating in PI planning and bi-weekly feature demos.\nAutomate operations center debugging tasks, using Java, which reduced the workload by 30%.\nUtilized an internal ticketing system to support an internal tool used by more than 2000 employees and its foundational infrastructure and core servers spanning on-premises, Azure, and AWS. This system was crucial for developers, quality assurance, and release management teams to streamline building, deploying, and testing of MX.3 versions.\nCreated Jenkins pipelines, Ansible playbooks, and Shell Scripts, ensuring automation of repetitive tasks and recurrent client challenges, leading to significant time savings.\nSignificantly increased the availability of the production database server by enhancing the transaction log shipper and database disaster recovery plan using Java and Bash Scripting, effectively minimizing the risk of data loss.\nCreated Splunk dashboards, monitors, and alerts.\nWrote complex and efficient SQL queries.",
@@ -11,6 +12,7 @@ export const experience = [
   {
     title: "Business/System Analyst",
     company: "Maids.cc",
+    image: "/images/maids.png",
     date : "Nov 2022 - May 2023",
     description:
       "Business and System analyst on the Accounting and Money Collection modules in the company’s ERP and supported the refunds and money collection process.\nLed the integration and optimization of these modules, ensuring efficient workflows and data consistency.\nCollaborated closely with the finance and client relations teams to ensure modules met the needs of the business.\nWorked heavily with SQL to perform data corrections, reports, and to collect data for internal projects.",
@@ -20,6 +22,7 @@ export const experience = [
   {
     title: "Full Stack Software Engineer",
     company: "Asset Science LLC",
+    image: "/images/asci.jpg",
     date : "June 2022 - Nov 2022",
     description:
       "Worked with a team of professional software developers where I was involved in a complete Agile SDLC lifestyle on designing, coding, debugging, and testing computer systems and desktop applications.\nWorked with React JS, Electron JS, and C++ for desktop application development, with various tools such as Chart.js, Redux, Flask, Bitbucket pipelines and JQL.",
@@ -29,6 +32,7 @@ export const experience = [
   {
     title: "Full Stack Software Engineer Intern",
     company: "EduPass NGO",
+    image: "/images/edupass.png",
     date : "June 2022",
     description:
       "Developed a full website for EduPass NGO, in 30 days, using the following stack ReactJS and Django.",
@@ -38,6 +42,7 @@ export const experience = [
   {
     title: "Full Stack Software Engineer Intern",
     company: "Bennett & Ranvile",
+    image: "/images/bennett_ranville_cover.jpg",
     date : "April 2022 - May 2022",
     description:
       "Worked in an Agile environment, as a React JS Developer for a healthcare management project. Developed the website using React JS and AWS Lambda.\nBuilt a CI/CD pipeline to deploy the website using GitHub Actions on Azure Static Apps.",
