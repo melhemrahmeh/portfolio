@@ -28,17 +28,19 @@ const Experience = () => (
     <SectionTitle main>Experience</SectionTitle>
     <GridContainer>
       {experience.map((p, i) => {
-        const bulletPoints = p.description
-          .split("\n")
-          .map((item, index) => <li key={index}>{item}</li>);
+        const bulletPoints = p.description.split("\n").map((item, index) => (
+          <li style={{ color: "white" }} key={index}>
+            {item}
+          </li>
+        ));
 
         return (
           <BlogCard key={i}>
             <TitleContent>
-            <Img style={{"backgroundColor": "white"}} src={p.image} />
+              <Img style={{ backgroundColor: "white" }} src={p.image} />
               <HeaderThree title>{p.title}</HeaderThree>
               <HeaderFour title>
-                {p.company}  |  {p.date}
+                {p.company} | {p.date}
               </HeaderFour>
               <Hr />
             </TitleContent>
