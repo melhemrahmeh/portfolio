@@ -133,6 +133,6 @@ export const TimeLineData = [
   },
   {
     year: 2023,
-    text: "Landed a DevOps Engineer role at Murex. Constantly improving in the domains of infrastruce engineering and software solutio.",
+    text: "Landed a DevOps Engineer role at Murex. Constantly improving in the domains of infrastruce engineering and software solutions.",
   },
 ];
