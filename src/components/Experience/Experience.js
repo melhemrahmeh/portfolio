@@ -29,15 +29,20 @@ const Experience = () => (
     <GridContainer>
       {experience.map((p, i) => {
         const bulletPoints = p.description.split("\n").map((item, index) => (
-          <li style={{ color: "white" }} key={index}>
-            {item}
-          </li>
+          <div>
+            {" "}
+            <li style={{ color: "white" }} key={index}>
+              • {item}
+            </li>
+            <br />
+          </div>
         ));
 
         return (
           <BlogCard key={i}>
             <TitleContent>
               <Img style={{ backgroundColor: "white" }} src={p.image} />
+              <Hr />
               <HeaderThree title>{p.title}</HeaderThree>
               <HeaderFour title>
                 {p.company} | {p.date}
