@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import {
   BlogCard,
@@ -12,13 +12,13 @@ import {
   TitleContent,
   UtilityList,
   Img,
-} from "./ProjectsStyles";
+} from './ProjectsStyles';
 import {
   Section,
   SectionDivider,
   SectionTitle,
-} from "../../styles/GlobalComponents";
-import { projects } from "../../constants/constants";
+} from '../../styles/GlobalComponents';
+import { projects } from '../../constants/constants';
 
 const Projects = () => (
   <Section nopadding id="projects">

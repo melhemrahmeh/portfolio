@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Section,
   SectionText,
   SectionTitle,
-} from "../../styles/GlobalComponents";
-import emailjs from "emailjs-com";
+} from '../../styles/GlobalComponents';
+import emailjs from 'emailjs-com';
 
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Contact() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleSubmit = (e) => {
     const values = {
@@ -21,18 +21,18 @@ function Contact() {
     };
     e.preventDefault();
     emailjs
-      .send("service_5lbrexw", "template_iv5pb2p", values, "SpHCRXL1ap7PX2DXj")
+      .send('service_5lbrexw', 'template_iv5pb2p', values, 'SpHCRXL1ap7PX2DXj')
       .then(
         (response) => {
-          console.log("SUCCESS!", response);
+          console.log('SUCCESS!', response);
         },
         (error) => {
-          console.log("FAILED...", error);
+          console.log('FAILED...', error);
         }
       );
   };
 
-  const notify = () => toast.success("Message Sent to Melhem Rahmeh!");
+  const notify = () => toast.success('Message Sent to Melhem Rahmeh!');
 
   return (
     <Section id="contact">
@@ -48,9 +48,9 @@ function Contact() {
         </div>
         <div
           style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
           <form>
@@ -63,10 +63,10 @@ function Contact() {
                 placeholder="Enter your Name:"
                 name="name"
                 style={{
-                  fontSize: "23px",
-                  width: "550px",
-                  height: "35px",
-                  borderRadius: "10px",
+                  fontSize: '23px',
+                  width: '550px',
+                  height: '35px',
+                  borderRadius: '10px',
                 }}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -84,10 +84,10 @@ function Contact() {
                 placeholder="Enter your Email:"
                 name="email"
                 style={{
-                  fontSize: "23px",
-                  width: "550px",
-                  height: "35px",
-                  borderRadius: "10px",
+                  fontSize: '23px',
+                  width: '550px',
+                  height: '35px',
+                  borderRadius: '10px',
                 }}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -105,10 +105,10 @@ function Contact() {
                 cols="30"
                 rows="10"
                 style={{
-                  fontSize: "23px",
-                  width: "550px",
-                  height: "150px",
-                  borderRadius: "10px",
+                  fontSize: '23px',
+                  width: '550px',
+                  height: '150px',
+                  borderRadius: '10px',
                 }}
                 placeholder="Feel Free to Enter Your Message!"
                 value={message}
@@ -120,11 +120,11 @@ function Contact() {
               <button
                 className="btn btn-light"
                 style={{
-                  fontSize: "23px",
-                  width: "100px",
-                  height: "45px",
-                  margin: "auto",
-                  borderRadius: "8px",
+                  fontSize: '23px',
+                  width: '100px',
+                  height: '45px',
+                  margin: 'auto',
+                  borderRadius: '8px',
                 }}
                 onClick={(e) => {
                   notify(), handleSubmit(e);

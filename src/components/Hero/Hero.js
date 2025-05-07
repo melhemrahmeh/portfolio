@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
 import {
   Section,
   SectionText,
   SectionTitle,
-} from "../../styles/GlobalComponents";
-import Button from "../../styles/GlobalComponents/Button";
-import { LeftSection } from "./HeroStyles";
+} from '../../styles/GlobalComponents';
+import Button from '../../styles/GlobalComponents/Button';
+import { LeftSection } from './HeroStyles';
 
 const Hero = () => (
   <Section row nopadding>
@@ -28,11 +28,11 @@ const Hero = () => (
       </SectionText>
       <Button
         onClick={() =>
-          (window.location = "https://www.linkedin.com/in/melhem-rahmeh/")
+          (window.location = 'https://www.linkedin.com/in/melhem-rahmeh/')
         }
       >
-        {" "}
-        Learn More{" "}
+        {' '}
+        Learn More{' '}
       </Button>
     </LeftSection>
   </Section>

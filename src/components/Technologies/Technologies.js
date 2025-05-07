@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   DiFirebase,
   DiReact,
@@ -8,20 +8,20 @@ import {
   DiStreamline,
   DiPython,
   DiDocker,
-} from "react-icons/di";
+} from 'react-icons/di';
 import {
   Section,
   SectionDivider,
   SectionText,
   SectionTitle,
-} from "../../styles/GlobalComponents";
+} from '../../styles/GlobalComponents';
 import {
   List,
   ListContainer,
   ListItem,
   ListParagraph,
   ListTitle,
-} from "./TechnologiesStyles";
+} from './TechnologiesStyles';
 
 const Technologies = () => (
   <Section id="tech">

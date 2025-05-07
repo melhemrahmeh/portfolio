@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const CarouselContainer = styled.ul`
   max-width: 1040px;

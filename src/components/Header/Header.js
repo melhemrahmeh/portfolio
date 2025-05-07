@@ -1,7 +1,7 @@
-import Link from "next/link";
-import React from "react";
-import { AiFillGithub, AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
-import { DiCssdeck } from "react-icons/di";
+import Link from 'next/link';
+import React from 'react';
+import { AiFillGithub, AiFillInstagram, AiFillLinkedin } from 'react-icons/ai';
+import { DiCssdeck } from 'react-icons/di';
 
 import {
   Container,
@@ -11,7 +11,7 @@ import {
   NavLink,
   SocialIcons,
   Span,
-} from "./HeaderStyles";
+} from './HeaderStyles';
 
 const Header = () => (
   <Container>
@@ -19,11 +19,11 @@ const Header = () => (
       <Link
         href="/"
         style={{
-          display: "flex",
-          alignItems: "center",
-          color: "white",
-          marginBottom: "20px",
-          textDecoration: "none",
+          display: 'flex',
+          alignItems: 'center',
+          color: 'white',
+          marginBottom: '20px',
+          textDecoration: 'none',
         }}
       >
         <DiCssdeck size="3rem" /> <Span>Melhem's Space</Span>
@@ -52,10 +52,18 @@ const Header = () => (
       </li>
     </Div2>
     <Div3>
-      <SocialIcons href="https://github.com/melhemrahmeh/" target="_blank" rel="noopener noreferrer">
+      <SocialIcons
+        href="https://github.com/melhemrahmeh/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <AiFillGithub size="3rem" />
       </SocialIcons>
-      <SocialIcons href="https://www.linkedin.com/in/melhem-rahmeh/" target="_blank" rel="noopener noreferrer">
+      <SocialIcons
+        href="https://www.linkedin.com/in/melhem-rahmeh/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <AiFillLinkedin size="3rem" />
       </SocialIcons>
       {/* <SocialIcons href="https://www.instagram.com/melhem.rahme/" target="_blank" rel="noopener noreferrer">

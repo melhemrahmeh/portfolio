@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
-    "start": "next start"
+    "build": "next build",
+    "start": "next start",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "bootstrap": "^5.1.3",
@@ -20,5 +21,12 @@
     "reactstrap": "^9.0.2",
     "styled-components": "^6.1.17",
     "styled-normalize": "^8.0.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-react": "^7.27.1",
+    "babel-plugin-styled-components": "^2.1.4",
+    "prettier": "^3.5.3"
   }
 }
