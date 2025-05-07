@@ -10,12 +10,12 @@ export const experience = [
     id: 1,
   },
   {
-    title: "Business/System Analyst",
+    title: "System Analyst",
     company: "Maids.cc",
     image: "/images/maids.png",
     date : "Nov 2022 - May 2023",
     description:
-      "Business and System analyst on the Accounting and Money Collection modules in the company's ERP and supported the refunds and money collection process.\nLed the integration and optimization of these modules, ensuring efficient workflows and data consistency.\nCollaborated closely with the finance and client relations teams to ensure modules met the needs of the business.\nUtilized advanced SQL skills for data correction, generating insightful reports, and gathering critical data to support internal project initiatives, thereby contributing to informed decision-making and strategic planning.",
+      "System analyst on the Accounting and Money Collection modules in the company's ERP and supported the refunds and money collection process.\nLed the integration and optimization of these modules, ensuring efficient workflows and data consistency.\nCollaborated closely with the finance and client relations teams to ensure modules met the needs of the business.\nUtilized advanced SQL skills for data correction, generating insightful reports, and gathering critical data to support internal project initiatives, thereby contributing to informed decision-making and strategic planning.",
     tags: ["React JS", "Flutter", "Firebase", "SQL Server", "Azure"],
     id: 2,
   },
@@ -135,4 +135,8 @@ export const TimeLineData = [
     year: 2023,
     text: "Landed a DevOps Engineer role at Murex. Constantly improving in the domains of infrastruce engineering and software solutions.",
   },
+  {
+    year: 2025,
+    text: "Earned 2 AWS Certifications and the Certified Kubernetes Administrator.",
+  }
 ];

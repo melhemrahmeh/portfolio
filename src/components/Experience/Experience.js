@@ -1,12 +1,10 @@
 import React from "react";
-
 import {
   BlogCard,
   CardInfo,
   ExternalLinks,
   GridContainer,
   HeaderThree,
-  HeaderFive,
   HeaderFour,
   Hr,
   Tag,
@@ -28,20 +26,10 @@ const Experience = () => (
     <SectionTitle main>Experience</SectionTitle>
     <GridContainer>
       {experience.map((p, i) => {
-        const bulletPoints = p.description.split("\n").map((item, index) => (
-          <div>
-            {" "}
-            <li style={{ color: "white" }} key={index}>
-              • {item}
-            </li>
-            <br />
-          </div>
-        ));
-
         return (
           <BlogCard key={i}>
             <TitleContent>
-              <Img style={{ backgroundColor: "white" }} src={p.image} />
+              <Img style={{ backgroundColor: "white" }} src={p.image} alt={p.company} />
               <Hr />
               <HeaderThree title>{p.title}</HeaderThree>
               <HeaderFour title>
@@ -50,20 +38,30 @@ const Experience = () => (
               <Hr />
             </TitleContent>
             <CardInfo className="card-info">
-              <ul style={{ color: "white" }}>{bulletPoints}</ul>
+              <ul style={{ color: "white", paddingLeft: "20px" }}>
+                {p.description.split("\n").map((item, index) => (
+                  <li key={`${i}-${index}`} style={{ marginBottom: "8px" }}>
+                    • {item}
+                  </li>
+                ))}
+              </ul>
             </CardInfo>
             <div>
               <Hr />
-              {/* <TagList>
-                {p.tags.map((t, i) => {
-                  return <Tag key={i}>{t}</Tag>;
-                })}
-              </TagList> */}
+              {/* Uncomment if needed:
+              <TagList>
+                {p.tags.map((t, i) => (
+                  <Tag key={i}>{t}</Tag>
+                ))}
+              </TagList>
+              */}
             </div>
-            {/* <UtilityList>
+            {/* Uncomment if needed:
+            <UtilityList>
               <ExternalLinks href={p.visit}>Code</ExternalLinks>
               <ExternalLinks href={p.source}>Source</ExternalLinks>
-            </UtilityList> */}
+            </UtilityList>
+            */}
           </BlogCard>
         );
       })}

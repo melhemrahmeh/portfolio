@@ -20,17 +20,17 @@ const Footer = () => {
       <LinkList>
         <LinkColumn>
           <LinkTitle>Address</LinkTitle>
-          <LinkItem>Beirut, Lebanon</LinkItem>
+          <LinkItem>Nicosia, Cyprus</LinkItem>
         </LinkColumn>
 
         <LinkColumn>
           <LinkTitle>Call</LinkTitle>
-          <LinkItem href="tel:314-343-3432">+961 71 589 832</LinkItem>
+          <LinkItem href="tel:314-343-3432">+357 96176803</LinkItem>
         </LinkColumn>
         <LinkColumn>
           <LinkTitle>Email</LinkTitle>
-          <LinkItem href="mailto:melhem.rahmeh@outlook.com">
-            melhem.rahmeh@outlook.com
+          <LinkItem href="mailto:melhem.rahmehh@gmail.com">
+            melhem.rahmehh@gmail.com
           </LinkItem>
         </LinkColumn>
       </LinkList>
@@ -47,9 +47,6 @@ const Footer = () => {
           <SocialIcons href="https://www.linkedin.com/in/melhem-rahmeh/">
             <AiFillLinkedin size="3rem" />
           </SocialIcons>
-          {/* <SocialIcons href="https://www.instagram.com/melhem.rahme/">
-            <AiFillInstagram size="3rem" />
-          </SocialIcons> */}
         </SocialContainer>
       </SocialIconsContainer>
     </FooterWrapper>
