@@ -112,6 +112,36 @@ export const projects = [
     visit: 'https://github.com/melhemrahmeh/CourseeraFactory',
     id: 6,
   },
+  {
+    title: 'Random Fact Generator',
+    description:
+      'A program that generates random facts using external APIs.',
+    image: '/images/randomfact.png',
+    tags: ['React JS', 'Vite', 'Pnpm', 'OANDA API'],
+    source: 'https://github.com/melhemrahmeh/random-fact-generator',
+    visit: 'https://randomlytrue.netlify.app/',
+    id: 7,
+  },
+  {
+    title: 'Currency Converter',
+    description:
+      'A program that converts money amounts from 2 different currencies.',
+    image: '/images/money.png',
+    tags: ['React JS', 'Vite', 'Pnpm', 'OANDA API'],
+    source: 'https://github.com/melhemrahmeh/currency-converter',
+    visit: 'https://moneyconvert.netlify.app/',
+    id: 8,
+  },
+  {
+    title: 'Quiz Cloud',
+    description:
+      'A program that contains questions and answers for several Cloud Online exams.',
+    image: '/images/quiz.png',
+    tags: ['React JS', 'Vite', 'Pnpm', 'OANDA API'],
+    source: 'https://github.com/melhemrahmeh/quizcloud',
+    visit: 'https://quizcloud-test.netlify.app/',
+    id: 9
+  }
 ];
 
 export const TimeLineData = [
