@@ -1,5 +1,4 @@
-import React from 'react';
-import { AiFillGithub, AiFillInstagram, AiFillLinkedin } from 'react-icons/ai';
+import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
 
 import { SocialIcons } from '../Header/HeaderStyles';
 import {
@@ -20,7 +19,7 @@ const Footer = () => {
       <LinkList>
         <LinkColumn>
           <LinkTitle>Address</LinkTitle>
-          <LinkItem>Nicosia, Cyprus</LinkItem>
+          <LinkItem>Limassol, Cyprus</LinkItem>
         </LinkColumn>
 
         <LinkColumn>
