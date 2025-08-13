@@ -1,5 +1,5 @@
 export const experience = [
-    {
+  {
     title: 'DevOps Engineer',
     company: 'FXPro',
     image: '/images/fx.png',
@@ -124,8 +124,7 @@ export const projects = [
   },
   {
     title: 'Random Fact Generator',
-    description:
-      'A program that generates random facts using external APIs.',
+    description: 'A program that generates random facts using external APIs.',
     image: '/images/randomfact.png',
     tags: ['React JS', 'Vite', 'Pnpm', 'OANDA API'],
     source: 'https://github.com/melhemrahmeh/random-fact-generator',
@@ -150,8 +149,8 @@ export const projects = [
     tags: ['React JS', 'Vite', 'Pnpm', 'OANDA API'],
     source: 'https://github.com/melhemrahmeh/quizcloud',
     visit: 'https://quizcloud-test.netlify.app/',
-    id: 9
-  }
+    id: 9,
+  },
 ];
 
 export const TimeLineData = [

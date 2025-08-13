@@ -25,12 +25,11 @@ const Hero = () => (
         Over the past 3+ years, I have built a diverse technical background,
         including roles as a Software Engineer at Asset Science, System Analyst
         at Maids.cc, and for the last 2 years, DevOps Engineer at Murex. I
-        specialize in automating deployments, managing cloud infrastructure,
-        and optimizing CI/CD pipelines.
+        specialize in automating deployments, managing cloud infrastructure, and
+        optimizing CI/CD pipelines.
         <br />
-        <br />
-        I am passionate about solving problems, streamlining processes, and
-        delivering scalable, reliable solutions in dynamic environments.
+        <br />I am passionate about solving problems, streamlining processes,
+        and delivering scalable, reliable solutions in dynamic environments.
       </SectionText>
 
       <Button
