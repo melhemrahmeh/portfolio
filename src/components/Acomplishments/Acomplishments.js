@@ -14,9 +14,11 @@ const data = [
   },
   { number: 'Honor List', text: 'Placed on the Deans Honor List at AUB' },
   { number: 'Scholarship', text: 'Full scholarship covered by USAID.' },
-  { number: '20+', text: 'Students Tutored (Math, Programming)' },
   { number: '2x AWS', text: 'Earned 2 AWS certifications' },
   { number: 'CKA', text: 'Earned the Certified Kubernetes Administrator' },
+  { number: 'DevOps', text: '2+ years of DevOps experience' },
+  { number: '3+', text: 'Years of Software Development Experience' },
+  { number: '4', text: 'Languages Spoken (English, Arabic, French, Greek)' },
 ];
 
 const Acomplishments = () => (
