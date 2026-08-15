@@ -9,7 +9,9 @@ import {
   Highlight,
   HighlightLabel,
   Highlights,
+  LogoPlate,
   Meta,
+  MetaColumn,
   Node,
   Panel,
   Role,
@@ -50,7 +52,14 @@ const Row = ({ job, compact }) => (
             {job.company} <span>· {job.location}</span>
           </Meta>
         </div>
-        <Dates>{job.date}</Dates>
+        <MetaColumn>
+          {!compact && job.logo && (
+            <LogoPlate>
+              <img src={job.logo} alt={`${job.company} logo`} loading="lazy" />
+            </LogoPlate>
+          )}
+          <Dates>{job.date}</Dates>
+        </MetaColumn>
       </TopRow>
 
       {!compact && (

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Frame = styled.div`
   width: 100%;
-  max-width: 520px;
+  max-width: 560px;
   margin-left: auto;
   background: #0b1220;
   border: 1px solid ${(props) => props.theme.colors.border};
@@ -44,14 +44,14 @@ const Body = styled.pre`
   margin: 0;
   padding: 20px 18px 22px;
   font-family: ${(props) => props.theme.fonts.mono};
-  font-size: 13px;
-  line-height: 1.85;
+  font-size: 12.5px;
+  line-height: 1.7;
   white-space: pre;
   overflow-x: auto;
   color: ${(props) => props.theme.colors.textMuted};
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    font-size: 11px;
+    font-size: 10.5px;
     padding: 16px 14px 18px;
   }
 `;
@@ -67,6 +67,13 @@ const Ok = styled.span`
 `;
 const Dim = styled.span`
   color: ${(props) => props.theme.colors.textSubtle};
+`;
+const Comment = styled.span`
+  color: ${(props) => props.theme.colors.purple};
+  opacity: 0.75;
+`;
+const Aws = styled.span`
+  color: #ff9900;
 `;
 
 const Caret = styled.span`
@@ -104,17 +111,32 @@ const TerminalCard = () => (
         runs of whitespace, so the spacing must not be written as markup. */}
     <Body>
       <Prompt>{'$ '}</Prompt>
-      <Cmd>{'kubectl get gateways -A\n'}</Cmd>
-      <Dim>{'NAMESPACE  NAME             CLASS  PROGRAMMED\n'}</Dim>
-      {'edge       envoy-public     envoy  '}
+      <Cmd>{'kubectl get gateways,ingress -A\n'}</Cmd>
+      <Dim>{'NAMESPACE  NAME                     CLASS  PROGRAMMED\n'}</Dim>
+      {'edge       gateway/envoy-public     envoy  '}
       <Ok>{'True\n'}</Ok>
-      {'edge       envoy-internal   envoy  '}
+      {'edge       gateway/envoy-internal   envoy  '}
+      <Ok>{'True\n'}</Ok>
+      {'legacy     gateway/kong-proxy       kong   '}
+      <Ok>{'True\n'}</Ok>
+      {'legacy     ingress/legacy-api       nginx  '}
       <Ok>{'True\n\n'}</Ok>
 
       <Prompt>{'$ '}</Prompt>
-      <Cmd>{'terraform apply -auto-approve\n'}</Cmd>
-      <Ok>{'Apply complete! '}</Ok>
-      <Dim>{'34 added, 6 changed, 0 destroyed.\n\n'}</Dim>
+      <Aws>{'aws'}</Aws>
+      <Cmd>{' eks list-clusters --output text\n'}</Cmd>
+      {'prod   staging   development\n\n'}
+
+      {/* <Comment>
+        {"# brought the company's entire AWS estate under Terraform,\n"}
+      </Comment>
+      <Comment>{'# then re-architected it into reusable modules\n'}</Comment> */}
+      <Prompt>{'$ '}</Prompt>
+      <Cmd>{'terraform import '}</Cmd>
+      <Aws>{'aws_vpc'}</Aws>
+      <Cmd>{'.core vpc-0a1b2c3d\n'}</Cmd>
+      <Ok>{'Import successful! '}</Ok>
+      <Dim>{'Resource now managed by Terraform.\n\n'}</Dim>
 
       <Prompt>{'$ '}</Prompt>
       <Cmd>{'curl -s status.internal | jq .uptime\n'}</Cmd>

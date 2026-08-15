@@ -140,6 +140,53 @@ export const Meta = styled.p`
   }
 `;
 
+/** Right-hand stack: brand mark above the dates. */
+export const MetaColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    align-items: flex-start;
+    gap: 8px;
+  }
+`;
+
+/**
+ * Light plate holding the company wordmark at its natural aspect ratio.
+ * These logos are wide (2:1 – 2.6:1) and Murex's lettering is dark grey, so
+ * they need a light ground and must never be forced into a square.
+ */
+export const LogoPlate = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: ${(props) => props.theme.radii.sm};
+  padding: 8px 12px;
+  height: 44px;
+  box-shadow: 0 2px 10px -4px rgba(0, 0, 0, 0.6);
+
+  img {
+    height: 100%;
+    width: auto;
+    max-width: 118px;
+    object-fit: contain;
+    display: block;
+  }
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    height: 34px;
+    padding: 6px 9px;
+
+    img {
+      max-width: 92px;
+    }
+  }
+`;
+
 export const Dates = styled.span`
   flex-shrink: 0;
   font-family: ${(props) => props.theme.fonts.mono};

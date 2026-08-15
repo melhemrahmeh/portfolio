@@ -22,6 +22,8 @@ export const experience = [
     location: 'Limassol, Cyprus',
     date: 'September 2025 - Present',
     current: true,
+    // Only the featured roles carry a logo; earlier ones use initial nodes.
+    logo: '/images/fxpro.webp',
     highlights: [
       {
         label: 'Multi-Cloud Kubernetes Orchestration',
@@ -65,6 +67,7 @@ export const experience = [
     company: 'Murex',
     location: 'Nicosia, Cyprus',
     date: 'June 2023 - September 2025',
+    logo: '/images/murex.webp',
     highlights: [
       {
         label: 'Automation Framework Operations',
