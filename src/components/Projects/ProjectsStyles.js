@@ -1,105 +1,160 @@
 import styled from 'styled-components';
 
-export const Img = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  overflow: hidden;
-`;
-
-export const GridContainer = styled.section`
+export const GridContainer = styled.ul`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  padding: 3rem;
-  place-items: center;
-  column-gap: 2rem;
-  row-gap: 3rem;
-  @media ${(props) => props.theme.breakpoints.sm} {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+  width: 100%;
+  margin: 36px 0 8px;
+
+  /* each grid cell is a Reveal wrapper rendered as <li> — stretch it so the
+     cards in a row share a height */
+  > li {
     display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    padding-bottom: 0;
   }
-`;
-export const BlogCard = styled.div`
-  border-radius: 10px;
-  box-shadow: 3px 3px 20px rgba(80, 78, 78, 0.5);
-  text-align: center;
-  width: 400px;
+
   @media ${(props) => props.theme.breakpoints.sm} {
-    width: 100%;
-  }
-`;
-export const TitleContent = styled.div`
-  text-align: center;
-  z-index: 20;
-  width: 100%;
-`;
-
-export const HeaderThree = styled.h3`
-  font-weight: 500;
-  letter-spacing: 2px;
-  color: #9cc9e3;
-  padding: 0.5rem 0;
-  font-size: ${(props) => (props.title ? '3rem' : '2rem')};
-`;
-
-export const Hr = styled.hr`
-  width: 50px;
-  height: 3px;
-  margin: 20px auto;
-  border: 0;
-  background: #d0bb57;
-`;
-
-export const Intro = styled.div`
-  width: 170px;
-  margin: 0 auto;
-  color: #dce3e7;
-  font-family: 'Droid Serif', serif;
-  font-size: 13px;
-  font-style: italic;
-  line-height: 18px;
-`;
-
-export const CardInfo = styled.p`
-  width: 100%;
-  padding: 0 50px;
-  color: #e4e6e7;
-  font-style: 2rem;
-  line-height: 24px;
-  text-align: justify;
-  @media ${(props) => props.theme.breakpoints.sm} {
-    padding: 0.3rem;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin: 24px 0 8px;
   }
 `;
 
-export const UtilityList = styled.ul`
-  list-style-type: none;
-  padding: 0;
+export const Card = styled.article`
+  flex: 1;
   display: flex;
-  justify-content: space-around;
-  margin: 2.5rem 0;
+  flex-direction: column;
+  background: ${(props) => props.theme.colors.surface1};
+  border: 1px solid ${(props) => props.theme.colors.border};
+  border-radius: ${(props) => props.theme.radii.lg};
+  box-shadow: ${(props) => props.theme.shadows.card};
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: ${(props) => props.theme.colors.borderStrong};
+    box-shadow: ${(props) => props.theme.shadows.cardHover};
+  }
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    border-radius: ${(props) => props.theme.radii.md};
+  }
 `;
 
-export const ExternalLinks = styled.a`
-  color: #d4c0c0;
-  font-size: 1.6rem;
-  padding: 1rem 1.5rem;
-  background: #6b3030;
-  border-radius: 15px;
-  transition: 0.5s;
-  &:hover {
-    background: #801414;
+export const Thumb = styled.div`
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: ${(props) => props.theme.colors.surface2};
+  overflow: hidden;
+
+  /* fade the image into the card body */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 45%;
+    background: linear-gradient(
+      to bottom,
+      rgba(20, 28, 47, 0),
+      ${(props) => props.theme.colors.surface1}
+    );
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  ${Card}:hover & img {
+    transform: scale(1.05);
+  }
+`;
+
+export const CardBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 24px;
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    padding: 18px;
+  }
+`;
+
+export const Title = styled.h3`
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: ${(props) => props.theme.colors.text};
+  margin-bottom: 10px;
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    font-size: 18px;
+  }
+`;
+
+export const Description = styled.p`
+  font-size: 15px;
+  line-height: 1.65;
+  color: ${(props) => props.theme.colors.textMuted};
+  margin-bottom: 20px;
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    font-size: 14px;
   }
 `;
 
 export const TagList = styled.ul`
   display: flex;
-  justify-content: space-around;
-  padding: 2rem;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-bottom: 20px;
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    gap: 6px;
+  }
 `;
-export const Tag = styled.li`
-  color: #d8bfbf;
-  font-size: 1.5rem;
+
+export const LinkRow = styled.div`
+  display: flex;
+  gap: 10px;
+  padding-top: 18px;
+  border-top: 1px solid ${(props) => props.theme.colors.border};
+`;
+
+export const ProjectLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 16px;
+  border-radius: ${(props) => props.theme.radii.pill};
+  transition: 0.3s ease;
+  color: ${(props) => (props.$primary ? '#fff' : props.theme.colors.textMuted)};
+  background: ${(props) =>
+    props.$primary ? props.theme.gradients.primary : 'transparent'};
+  border: 1px solid
+    ${(props) => (props.$primary ? 'transparent' : props.theme.colors.border)};
+
+  &:hover {
+    color: #fff;
+    border-color: ${(props) =>
+      props.$primary ? 'transparent' : props.theme.colors.borderStrong};
+    transform: translateY(-2px);
+  }
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    font-size: 13px;
+    padding: 9px 14px;
+  }
 `;

@@ -1,150 +1,197 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
+import { ToastContainer, toast } from 'react-toastify';
+import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
+import { HiOutlineMail } from 'react-icons/hi';
+import 'react-toastify/dist/ReactToastify.css';
+
 import {
+  DirectLink,
+  DirectLinks,
+  Field,
+  Form,
+  FormStatus,
+  HoneyPot,
+  Input,
+  Label,
+  SubmitButton,
+  TextArea,
+} from './ContactStyles';
+import {
+  Eyebrow,
   Section,
   SectionText,
   SectionTitle,
 } from '../../styles/GlobalComponents';
-import emailjs from 'emailjs-com';
+import Reveal from '../Reveal/Reveal';
+import { profile } from '../../constants/constants';
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+const EMAILJS_SERVICE = 'service_5lbrexw';
+const EMAILJS_TEMPLATE = 'template_iv5pb2p';
+const EMAILJS_PUBLIC_KEY = 'SpHCRXL1ap7PX2DXj';
+
+const EMPTY_FORM = { name: '', email: '', message: '' };
+
+/** Minimum gap between sends, so the EmailJS quota can't be drained in a loop. */
+const THROTTLE_MS = 30_000;
+
 function Contact() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [values, setValues] = useState(EMPTY_FORM);
+  const [status, setStatus] = useState('idle');
+  // Bots fill every field they find; humans never see this one.
+  const [trap, setTrap] = useState('');
+  const lastSentAt = useRef(0);
 
-  const handleSubmit = (e) => {
-    const values = {
-      name: name,
-      email: email,
-      message: message,
-    };
-    e.preventDefault();
-    emailjs
-      .send('service_5lbrexw', 'template_iv5pb2p', values, 'SpHCRXL1ap7PX2DXj')
-      .then(
-        (response) => {
-          console.log('SUCCESS!', response);
-        },
-        (error) => {
-          console.log('FAILED...', error);
-        }
-      );
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setValues((current) => ({ ...current, [name]: value }));
   };
 
-  const notify = () => toast.success('Message Sent to Melhem Rahmeh!');
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (status === 'sending') return;
+
+    // Silently accept honeypot submissions rather than telling the bot why.
+    if (trap) {
+      setStatus('sent');
+      setValues(EMPTY_FORM);
+      return;
+    }
+
+    const since = Date.now() - lastSentAt.current;
+    if (since < THROTTLE_MS) {
+      const wait = Math.ceil((THROTTLE_MS - since) / 1000);
+      toast.info(`Please wait ${wait}s before sending another message.`);
+      return;
+    }
+
+    setStatus('sending');
+
+    try {
+      await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, values, {
+        publicKey: EMAILJS_PUBLIC_KEY,
+      });
+      lastSentAt.current = Date.now();
+      setStatus('sent');
+      setValues(EMPTY_FORM);
+      toast.success('Message sent — I will get back to you shortly!');
+    } catch (error) {
+      setStatus('error');
+      toast.error('Something went wrong. Please email me directly instead.');
+    }
+  };
 
   return (
     <Section id="contact">
-      <br />
-      <SectionTitle>Contact Me</SectionTitle>
-      <SectionText>
-        <div>
-          Interested in working together?
-          <br />
-          Or perhaps you would just like to connect? So kindly leave a message
-          below. <br />
-          <br />
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
+      <Reveal>
+        <Eyebrow>Say hello</Eyebrow>
+        <SectionTitle>Contact</SectionTitle>
+        <SectionText>
+          Interested in working together, or just want to connect? Leave a
+          message below and I&apos;ll get back to you.
+        </SectionText>
+      </Reveal>
+
+      <DirectLinks>
+        <DirectLink href={`mailto:${profile.email}`}>
+          <HiOutlineMail aria-hidden="true" /> {profile.email}
+        </DirectLink>
+        <DirectLink
+          href={profile.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <form>
-            <div class="form-group">
-              <label for="pwd">Name:</label>
-              <input
-                type="text"
-                class="form-control"
-                id="pwd"
-                placeholder="Enter your Name:"
-                name="name"
-                style={{
-                  fontSize: '23px',
-                  width: '550px',
-                  height: '35px',
-                  borderRadius: '10px',
-                }}
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-            <div>
-              <br />
-            </div>
-            <div class="form-group">
-              <label for="email">Email:</label>
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                placeholder="Enter your Email:"
-                name="email"
-                style={{
-                  fontSize: '23px',
-                  width: '550px',
-                  height: '35px',
-                  borderRadius: '10px',
-                }}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div>
-              <br />
-            </div>
-            <div class="form-group">
-              <label for="pwd">Message:</label>
-              <textarea
-                name=""
-                id=""
-                class="form-control"
-                cols="30"
-                rows="10"
-                style={{
-                  fontSize: '23px',
-                  width: '550px',
-                  height: '150px',
-                  borderRadius: '10px',
-                }}
-                placeholder="Feel Free to Enter Your Message!"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-              ></textarea>
-            </div>
-            <br />
-            <div class="d-flex justify-content-center">
-              <button
-                className="btn btn-light"
-                style={{
-                  fontSize: '23px',
-                  width: '100px',
-                  height: '45px',
-                  margin: 'auto',
-                  borderRadius: '8px',
-                }}
-                onClick={(e) => {
-                  notify(), handleSubmit(e);
-                }}
-              >
-                <b>Send</b>
-              </button>
-            </div>
-          </form>
-          <ToastContainer
-            autoClose={4000}
-            hideProgressBar={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
+          <AiFillLinkedin aria-hidden="true" /> LinkedIn
+        </DirectLink>
+        <DirectLink
+          href={profile.github}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <AiFillGithub aria-hidden="true" /> GitHub
+        </DirectLink>
+      </DirectLinks>
+
+      <Form onSubmit={handleSubmit}>
+        <Field>
+          <Label htmlFor="contact-name">Name</Label>
+          <Input
+            id="contact-name"
+            name="name"
+            type="text"
+            autoComplete="name"
+            placeholder="Your name"
+            required
+            value={values.name}
+            onChange={handleChange}
           />
-        </div>
-      </SectionText>
+        </Field>
+
+        <Field>
+          <Label htmlFor="contact-email">Email</Label>
+          <Input
+            id="contact-email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            placeholder="you@example.com"
+            required
+            value={values.email}
+            onChange={handleChange}
+          />
+        </Field>
+
+        <Field>
+          <Label htmlFor="contact-message">Message</Label>
+          <TextArea
+            id="contact-message"
+            name="message"
+            rows={8}
+            placeholder="What would you like to talk about?"
+            required
+            value={values.message}
+            onChange={handleChange}
+          />
+        </Field>
+
+        <HoneyPot aria-hidden="true">
+          <label htmlFor="contact-company">
+            Company (leave this field empty)
+          </label>
+          <input
+            id="contact-company"
+            name="company"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            value={trap}
+            onChange={(event) => setTrap(event.target.value)}
+          />
+        </HoneyPot>
+
+        <SubmitButton type="submit" disabled={status === 'sending'}>
+          {status === 'sending' ? 'Sending…' : 'Send message'}
+        </SubmitButton>
+
+        <FormStatus
+          role="status"
+          aria-live="polite"
+          $error={status === 'error'}
+        >
+          {status === 'sent' && 'Thanks! Your message is on its way.'}
+          {status === 'error' &&
+            `Your message could not be sent. Reach me directly at ${profile.email}.`}
+        </FormStatus>
+      </Form>
+
+      <ToastContainer
+        theme="dark"
+        position="bottom-right"
+        autoClose={4000}
+        closeOnClick
+        pauseOnHover
+        draggable
+      />
     </Section>
   );
 }

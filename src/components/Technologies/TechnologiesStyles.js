@@ -1,137 +1,103 @@
 import styled from 'styled-components';
 
-export const ImageContainer = styled.div`
-  text-align: center;
-  background-image: radial-gradient(
-    50% 50% at 50% 50%,
-    rgba(79, 108, 176, 0.25) 53.8%,
-    rgba(79, 108, 176, 0) 100%
-  );
+export const StackList = styled.dl`
   width: 100%;
-  padding: 60px;
-  margin-top: 48px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  margin: 36px 0 8px;
+  border-top: 1px solid ${(props) => props.theme.colors.border};
 
-  @media ${(props) => props.theme.breakpoints.lg} {
-    background-image: none;
-    padding: 0;
-    margin-top: 40px;
-  }
-  @media ${(props) => props.theme.breakpoints.md} {
-    background-image: none;
-    padding: 0;
-    margin-top: 16px;
+  @media ${(props) => props.theme.breakpoints.sm} {
+    margin-top: 24px;
   }
 `;
 
-export const MainImage = styled.img`
-  width: 100%;
-`;
-
-export const List = styled.ul`
-  list-style-type: none;
+export const StackRow = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  margin: 3rem 0;
+  grid-template-columns: 190px 1fr;
+  gap: 28px;
+  align-items: start;
+  padding: 22px 4px;
+  border-bottom: 1px solid ${(props) => props.theme.colors.border};
+  transition: background 0.25s ease;
 
-  @media ${(props) => props.theme.breakpoints.lg} {
-    margin: 64px 0;
+  &:hover {
+    background: rgba(255, 255, 255, 0.015);
   }
 
   @media ${(props) => props.theme.breakpoints.md} {
-    margin: 64px 0;
-    gap: 24px;
+    grid-template-columns: 150px 1fr;
+    gap: 20px;
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    display: flex;
-    flex-direction: column;
-    margin: 32px 0;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 16px 2px;
   }
 `;
 
-export const ListContainer = styled.div`
+export const GroupLabel = styled.dt`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: ${(props) => props.theme.fonts.title};
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: ${(props) => props.theme.colors.text};
+
+  svg {
+    flex-shrink: 0;
+    color: ${(props) => props.theme.colors.cyan};
+  }
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    font-size: 13px;
+    color: ${(props) => props.theme.colors.cyan};
+  }
+`;
+
+export const GroupBody = styled.dd`
   display: flex;
   flex-direction: column;
-
-  @media ${(props) => props.theme.breakpoints.sm} {
-    display: flex;
-    margin-left: 18px;
-  }
+  gap: 10px;
+  margin: 0;
+  min-width: 0;
 `;
 
-export const ListTitle = styled.h4`
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 32px;
-  letter-spacing: 0.02em;
-  color: #ffffff;
-  margin-bottom: 8px;
-
-  @media ${(props) => props.theme.breakpoints.md} {
-    font-size: 24px;
-    line-height: 28px;
-  }
-
-  @media ${(props) => props.theme.breakpoints.sm} {
-    font-size: 20px;
-    line-height: 28px;
-    letter-spacing: 0.02em;
-    margin-bottom: 4px;
-  }
-`;
-
-export const ListParagraph = styled.p`
-  font-size: 18px;
-  line-height: 30px;
-  color: rgba(255, 255, 255, 0.75);
-
-  @media ${(props) => props.theme.breakpoints.md} {
-    font-size: 16px;
-    line-height: 28px;
-  }
-
-  @media ${(props) => props.theme.breakpoints.sm} {
-    font-size: 14px;
-    line-height: 22px;
-  }
-`;
-
-export const ListItem = styled.li`
-  max-width: 320px;
+export const CoreList = styled.ul`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 8px;
+`;
 
-  @media ${(props) => props.theme.breakpoints.md} {
-    max-width: 203px;
-  }
+/** The primary tools in a group — visually weighted above the rest. */
+export const CoreChip = styled.span`
+  display: inline-flex;
+  align-items: center;
+  font-family: ${(props) => props.theme.fonts.title};
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 8px 14px;
+  border-radius: ${(props) => props.theme.radii.pill};
+  color: ${(props) => props.theme.colors.text};
+  background: rgba(19, 173, 199, 0.1);
+  border: 1px solid rgba(19, 173, 199, 0.35);
+  white-space: nowrap;
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    margin-bottom: 14px;
-    max-width: 320px;
-    flex-direction: row;
+    font-size: 12px;
+    padding: 7px 11px;
   }
 `;
 
-export const ListIcon = styled.img`
-  display: block;
-  width: 48px;
-  height: 48px;
-  margin-bottom: 10px;
-
-  @media ${(props) => props.theme.breakpoints.md} {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 8px;
-  }
+/** Everything else, as quiet running text rather than another wall of pills. */
+export const AlsoLine = styled.p`
+  font-size: 14px;
+  line-height: 1.7;
+  color: ${(props) => props.theme.colors.textSubtle};
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    width: 32px;
-    height: 32px;
-    margin-bottom: 0px;
+    font-size: 12.5px;
   }
 `;

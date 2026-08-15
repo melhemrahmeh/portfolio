@@ -1,127 +1,235 @@
-import { IoIosArrowDropdown } from 'react-icons/io';
+import Link from 'next/link';
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 2rem;
-  padding: 1rem;
-  padding-top: 2rem;
+export const Container = styled.header`
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  background: ${(props) =>
+    props.$scrolled ? 'rgba(15, 22, 36, 0.88)' : 'rgba(15, 22, 36, 0.55)'};
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid
+    ${(props) => (props.$scrolled ? props.theme.colors.border : 'transparent')};
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
+`;
 
-  @media ${(props) => props.theme.breakpoints.sm} {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(2, 60px);
-    grid-column-gap: 0.5rem;
-    grid-row-gap: 0.5rem;
+export const Inner = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 14px 24px;
+
+  @media ${(props) => props.theme.breakpoints.md} {
+    padding: 12px 16px;
+  }
+`;
+
+export const Brand = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  color: ${(props) => props.theme.colors.text};
+  transition: 0.3s ease;
+
+  &:hover {
+    color: ${(props) => props.theme.colors.cyan};
   }
 `;
 
 export const Span = styled.span`
-  font-size: 2rem;
+  font-family: ${(props) => props.theme.fonts.title};
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    font-size: 16px;
+  }
 `;
 
-export const Div1 = styled.div`
-  grid-area: 1 / 1 / 2 / 2;
+export const Nav = styled.nav`
   display: flex;
-  flex-direction: row;
-  align-content: center;
-  @media ${(props) => props.theme.breakpoints.sm} {
-    grid-area: 1 / 1 / 2 / 3;
-  }
-`;
-export const Div2 = styled.div`
-  grid-area: 1 / 2 / 2 / 4;
-  display: flex;
-  justify-content: space-around;
-  @media ${(props) => props.theme.breakpoints.sm} {
-    grid-area: 2 / 2 / 3 / 5;
-  }
-`;
-export const Div3 = styled.div`
-  grid-area: 1 / 5 / 2 / 6;
-  display: flex;
-  justify-content: space-around;
   align-items: center;
-  @media ${(props) => props.theme.breakpoints.sm} {
+
+  ul {
+    display: flex;
     align-items: center;
-    grid-area: 1 / 4 / 2 / 6;
-  }
-`;
-
-// Navigation Links
-export const NavLink = styled.a`
-  font-size: 2rem;
-  line-height: 32px;
-  color: rgba(255, 255, 255, 0.75);
-  transition: 0.4s ease;
-  &:hover {
-    color: #fff;
-    opacity: 1;
-    cursor: pointer;
-  }
-  @media ${(props) => props.theme.breakpoints.sm} {
-    padding: 0.5rem;
-  }
-`;
-
-/// DropDown Contact
-export const ContactDropDown = styled.button`
-  border: none;
-  display: flex;
-  position: relative;
-  background: none;
-  font-size: 1.7rem;
-
-  line-height: 32px;
-  color: rgba(255, 255, 255, 0.75);
-  cursor: pointer;
-  transition: 0.3s ease;
-
-  &:focus {
-    outline: none;
-  }
-  &:hover {
-    color: #fff;
+    gap: 4px;
   }
 
-  @media ${(props) => props.theme.breakpoints.sm} {
-    padding: 0.4rem 0;
-  }
+  /* Replaced by the drawer below this width. */
   @media ${(props) => props.theme.breakpoints.md} {
-    padding: 0;
+    display: none;
   }
 `;
 
-export const NavProductsIcon = styled(IoIosArrowDropdown)`
-  margin-left: 8px;
-  display: flex;
-  align-self: center;
-  transition: 0.3s ease;
-  opacity: ${({ isOpen }) => (isOpen ? '1' : '.75')};
-  transform: ${({ isOpen }) => (isOpen ? 'scaleY(-1)' : 'scaleY(1)')};
+export const NavLink = styled(Link)`
+  position: relative;
+  display: inline-block;
+  font-size: 15px;
+  color: ${(props) => (props.$active ? '#fff' : props.theme.colors.textMuted)};
+  padding: 8px 14px;
+  border-radius: ${(props) => props.theme.radii.pill};
+  transition: 0.25s ease;
+  cursor: pointer;
+
+  /* underline grows from the centre on hover / when active */
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 2px;
+    transform: translateX(-50%);
+    width: ${(props) => (props.$active ? '18px' : '0')};
+    height: 2px;
+    border-radius: 2px;
+    background: ${(props) => props.theme.gradients.primary};
+    transition: width 0.25s ease;
+  }
 
   &:hover {
-    opacity: 1;
-  }
+    color: #fff;
 
-  @media ${(props) => props.theme.breakpoints.sm} {
-    margin: 2px 0 0 2px;
-    width: 15px;
+    &::after {
+      width: 18px;
+    }
   }
 `;
 
-// Social Icons
+export const SocialRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  @media ${(props) => props.theme.breakpoints.md} {
+    display: none;
+  }
+`;
 
 export const SocialIcons = styled.a`
-  transition: 0.3s ease;
-  color: white;
-  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: ${(props) => props.theme.colors.textMuted};
+  border-radius: 50%;
   padding: 8px;
+  transition: 0.3s ease;
+
   &:hover {
-    background-color: #212d45;
-    transform: scale(1.2);
-    cursor: pointer;
+    color: #fff;
+    background-color: ${(props) => props.theme.colors.surface2};
+    transform: scale(1.1);
   }
+`;
+
+/* ---------------------------------------------------------------- drawer */
+
+export const MenuButton = styled.button`
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid ${(props) => props.theme.colors.border};
+  border-radius: ${(props) => props.theme.radii.sm};
+  color: ${(props) => props.theme.colors.text};
+  padding: 8px;
+  cursor: pointer;
+  transition: 0.25s ease;
+
+  &:hover {
+    border-color: ${(props) => props.theme.colors.borderStrong};
+  }
+
+  @media ${(props) => props.theme.breakpoints.md} {
+    display: inline-flex;
+  }
+`;
+
+export const Backdrop = styled.div`
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(6, 10, 18, 0.6);
+  backdrop-filter: blur(2px);
+  opacity: ${(props) => (props.$open ? 1 : 0)};
+  pointer-events: ${(props) => (props.$open ? 'auto' : 'none')};
+  transition: opacity 0.3s ease;
+`;
+
+export const Drawer = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 61;
+  width: min(320px, 82vw);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px 20px;
+  background: ${(props) => props.theme.colors.surface1};
+  border-left: 1px solid ${(props) => props.theme.colors.border};
+  transform: translateX(${(props) => (props.$open ? '0' : '100%')});
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow-y: auto;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+`;
+
+export const DrawerHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+`;
+
+export const DrawerTitle = styled.p`
+  font-family: ${(props) => props.theme.fonts.mono};
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: ${(props) => props.theme.colors.textSubtle};
+`;
+
+export const DrawerLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: ${(props) => props.theme.fonts.title};
+  font-size: 18px;
+  font-weight: 500;
+  color: ${(props) => (props.$active ? '#fff' : props.theme.colors.textMuted)};
+  background: ${(props) =>
+    props.$active ? 'rgba(255,255,255,0.05)' : 'transparent'};
+  border-radius: ${(props) => props.theme.radii.sm};
+  padding: 14px 14px;
+  transition: 0.25s ease;
+
+  &:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+  }
+`;
+
+export const DrawerRule = styled.hr`
+  border: 0;
+  border-top: 1px solid ${(props) => props.theme.colors.border};
+  margin: 12px 0;
+`;
+
+export const DrawerSocials = styled.div`
+  display: flex;
+  gap: 10px;
+  padding: 0 6px;
 `;

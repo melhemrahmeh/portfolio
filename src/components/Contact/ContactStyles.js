@@ -1,137 +1,164 @@
 import styled from 'styled-components';
 
-export const ImageContainer = styled.div`
-  text-align: center;
-  background-image: radial-gradient(
-    50% 50% at 50% 50%,
-    rgba(79, 108, 176, 0.25) 53.8%,
-    rgba(79, 108, 176, 0) 100%
-  );
-  width: 100%;
-  padding: 60px;
-  margin-top: 48px;
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 640px;
+  background: ${(props) => props.theme.colors.surface1};
+  border: 1px solid ${(props) => props.theme.colors.border};
+  border-radius: ${(props) => props.theme.radii.lg};
+  padding: 32px;
+  margin-bottom: 32px;
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    padding: 20px 18px;
+    gap: 16px;
+    border-radius: ${(props) => props.theme.radii.md};
+  }
+`;
+
+export const Field = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+export const Label = styled.label`
+  font-size: 14px;
+  font-weight: 500;
+  color: ${(props) => props.theme.colors.textMuted};
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    font-size: 13px;
+  }
+`;
+
+const fieldStyles = (props) => `
+  width: 100%;
+  font-family: ${props.theme.fonts.main};
+  font-size: 16px;
+  line-height: 1.5;
+  color: ${props.theme.colors.text};
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid ${props.theme.colors.border};
+  border-radius: ${props.theme.radii.sm};
+  padding: 14px 16px;
+  transition: border-color 0.25s ease, background 0.25s ease;
+
+  &::placeholder {
+    color: ${props.theme.colors.textSubtle};
+  }
+
+  &:hover {
+    border-color: ${props.theme.colors.borderStrong};
+  }
+
+  &:focus {
+    outline: none;
+    border-color: ${props.theme.colors.cyan};
+    background: rgba(255, 255, 255, 0.06);
+  }
+`;
+
+export const Input = styled.input`
+  ${(props) => fieldStyles(props)}
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    font-size: 15px;
+    padding: 12px 14px;
+  }
+`;
+
+export const TextArea = styled.textarea`
+  ${(props) => fieldStyles(props)}
+  min-height: 160px;
+  resize: vertical;
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    font-size: 15px;
+    padding: 12px 14px;
+    min-height: 130px;
+  }
+`;
+
+export const SubmitButton = styled.button`
+  align-self: flex-start;
+  font-family: ${(props) => props.theme.fonts.title};
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+  background: ${(props) => props.theme.gradients.primary};
+  border: none;
+  border-radius: ${(props) => props.theme.radii.pill};
+  padding: 15px 34px;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px -12px rgba(19, 173, 199, 0.8);
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    align-self: stretch;
+    font-size: 15px;
+    padding: 13px 24px;
+  }
+`;
+
+export const DirectLinks = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+`;
+
+export const DirectLink = styled.a`
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 10px;
+  font-size: 15px;
+  color: ${(props) => props.theme.colors.textMuted};
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid ${(props) => props.theme.colors.border};
+  border-radius: ${(props) => props.theme.radii.pill};
+  padding: 11px 18px;
+  transition: 0.3s ease;
 
-  @media ${(props) => props.theme.breakpoints.lg} {
-    background-image: none;
-    padding: 0;
-    margin-top: 40px;
-  }
-  @media ${(props) => props.theme.breakpoints.md} {
-    background-image: none;
-    padding: 0;
-    margin-top: 16px;
-  }
-`;
-
-export const MainImage = styled.img`
-  width: 100%;
-`;
-
-export const List = styled.ul`
-  list-style-type: none;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  margin: 3rem 0;
-
-  @media ${(props) => props.theme.breakpoints.lg} {
-    margin: 64px 0;
-  }
-
-  @media ${(props) => props.theme.breakpoints.md} {
-    margin: 64px 0;
-    gap: 24px;
+  &:hover {
+    color: #fff;
+    border-color: ${(props) => props.theme.colors.borderStrong};
+    transform: translateY(-2px);
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    display: flex;
-    flex-direction: column;
-    margin: 32px 0;
+    font-size: 13px;
+    padding: 9px 14px;
   }
 `;
 
-export const ListContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  @media ${(props) => props.theme.breakpoints.sm} {
-    display: flex;
-    margin-left: 18px;
-  }
+/**
+ * Spam trap. Kept out of the layout and the tab order without display:none,
+ * which some bots specifically skip.
+ */
+export const HoneyPot = styled.div`
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 `;
 
-export const ListTitle = styled.h4`
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 32px;
-  letter-spacing: 0.02em;
-  color: #ffffff;
-  margin-bottom: 8px;
-
-  @media ${(props) => props.theme.breakpoints.md} {
-    font-size: 24px;
-    line-height: 28px;
-  }
-
-  @media ${(props) => props.theme.breakpoints.sm} {
-    font-size: 20px;
-    line-height: 28px;
-    letter-spacing: 0.02em;
-    margin-bottom: 4px;
-  }
-`;
-
-export const ListParagraph = styled.p`
-  font-size: 18px;
-  line-height: 30px;
-  color: rgba(255, 255, 255, 0.75);
-
-  @media ${(props) => props.theme.breakpoints.md} {
-    font-size: 16px;
-    line-height: 28px;
-  }
-
-  @media ${(props) => props.theme.breakpoints.sm} {
-    font-size: 14px;
-    line-height: 22px;
-  }
-`;
-
-export const ListItem = styled.li`
-  max-width: 320px;
-  display: flex;
-  flex-direction: column;
-
-  @media ${(props) => props.theme.breakpoints.md} {
-    max-width: 203px;
-  }
-
-  @media ${(props) => props.theme.breakpoints.sm} {
-    margin-bottom: 14px;
-    max-width: 320px;
-    flex-direction: row;
-  }
-`;
-
-export const ListIcon = styled.img`
-  display: block;
-  width: 48px;
-  height: 48px;
-  margin-bottom: 10px;
-
-  @media ${(props) => props.theme.breakpoints.md} {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 8px;
-  }
-
-  @media ${(props) => props.theme.breakpoints.sm} {
-    width: 32px;
-    height: 32px;
-    margin-bottom: 0px;
-  }
+export const FormStatus = styled.p`
+  font-size: 14px;
+  line-height: 1.5;
+  color: ${(props) =>
+    props.$error ? '#ff8a75' : props.theme.colors.textMuted};
 `;

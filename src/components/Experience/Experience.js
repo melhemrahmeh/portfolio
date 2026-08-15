@@ -1,129 +1,127 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FiChevronDown } from 'react-icons/fi';
+
 import {
-  BlogCard,
-  CardInfo,
-  ExternalLinks,
-  GridContainer,
-  HeaderThree,
-  HeaderFour,
-  Hr,
-  Tag,
+  CurrentTag,
+  Dates,
+  EarlierWrap,
+  Entry,
+  Highlight,
+  HighlightLabel,
+  Highlights,
+  Meta,
+  Node,
+  Panel,
+  Role,
   TagList,
-  TitleContent,
-  UtilityList,
-  Img,
-} from './ProjectsStyles';
+  ToggleButton,
+  TopRow,
+  Track,
+} from './ExperienceStyles';
 import {
+  Chip,
+  Eyebrow,
   Section,
-  SectionDivider,
+  SectionText,
   SectionTitle,
 } from '../../styles/GlobalComponents';
+import Reveal from '../Reveal/Reveal';
 import { experience } from '../../constants/constants';
 
-const Experience = () => (
-  <Section nopadding id="experience">
-    <SectionDivider />
-    <SectionTitle main>Experience</SectionTitle>
-    <GridContainer>
-      {experience.map((p, i) => {
-        // Filter out empty lines from description
-        const descriptionItems = p.description
-          .split('\n')
-          .filter((item) => item.trim() !== '');
+/** The two most recent roles carry the detail; older ones are summarised. */
+const FEATURED_COUNT = 2;
 
-        return (
-          <BlogCard key={`exp-${i}-${p.company.replace(/\s+/g, '-')}`}>
-            <TitleContent>
-              {p.image && (
-                <Img
-                  style={{ backgroundColor: 'white' }}
-                  src={p.image}
-                  alt={`${p.company} logo`}
-                  loading="lazy"
-                />
-              )}
-              <Hr />
-              <HeaderThree title>{p.title}</HeaderThree>
-              <HeaderFour title>
-                {p.company} | {p.date}
-              </HeaderFour>
-              <Hr />
-            </TitleContent>
+const initialOf = (company) => company.charAt(0).toUpperCase();
 
-            <CardInfo className="card-info">
-              {descriptionItems.length > 0 ? (
-                <ul
-                  style={{
-                    color: 'white',
-                    paddingLeft: '20px',
-                    listStyleType: 'none',
-                    margin: 0,
-                  }}
-                >
-                  {descriptionItems.map((item, index) => (
-                    <li
-                      key={`desc-${i}-${index}`}
-                      style={{
-                        marginBottom: '8px',
-                        position: 'relative',
-                        paddingLeft: '1rem',
-                      }}
-                    >
-                      <span
-                        style={{
-                          position: 'absolute',
-                          left: 0,
-                        }}
-                      >
-                        •
-                      </span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p style={{ color: 'white' }}>No description provided</p>
-              )}
-            </CardInfo>
+const Row = ({ job, compact }) => (
+  <Entry $compact={compact}>
+    <Node $compact={compact} $current={job.current} aria-hidden="true">
+      {initialOf(job.company)}
+    </Node>
 
-            <div>
-              <Hr />
-              {p.tags?.length > 0 && (
-                <TagList>
-                  {p.tags.map((t, i) => (
-                    <Tag key={`tag-${i}-${t.replace(/\s+/g, '-')}`}>{t}</Tag>
-                  ))}
-                </TagList>
-              )}
-            </div>
+    <Panel $compact={compact}>
+      <TopRow>
+        <div>
+          <Role $compact={compact}>
+            {job.title}
+            {job.current && <CurrentTag>Current</CurrentTag>}
+          </Role>
+          <Meta $compact={compact}>
+            {job.company} <span>· {job.location}</span>
+          </Meta>
+        </div>
+        <Dates>{job.date}</Dates>
+      </TopRow>
 
-            {(p.visit || p.source) && (
-              <UtilityList>
-                {p.visit && (
-                  <ExternalLinks
-                    href={p.visit}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Code
-                  </ExternalLinks>
-                )}
-                {p.source && (
-                  <ExternalLinks
-                    href={p.source}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Source
-                  </ExternalLinks>
-                )}
-              </UtilityList>
-            )}
-          </BlogCard>
-        );
-      })}
-    </GridContainer>
-  </Section>
+      {!compact && (
+        <>
+          <Highlights>
+            {job.highlights.map((item) => (
+              <Highlight key={item.label}>
+                <HighlightLabel>{item.label}:</HighlightLabel> {item.text}
+              </Highlight>
+            ))}
+          </Highlights>
+
+          {job.tags?.length > 0 && (
+            <TagList>
+              {job.tags.map((tag) => (
+                <li key={tag}>
+                  <Chip>{tag}</Chip>
+                </li>
+              ))}
+            </TagList>
+          )}
+        </>
+      )}
+    </Panel>
+  </Entry>
 );
+
+const Experience = () => {
+  const [showEarlier, setShowEarlier] = useState(false);
+
+  const featured = experience.slice(0, FEATURED_COUNT);
+  const earlier = experience.slice(FEATURED_COUNT);
+
+  return (
+    <Section id="experience">
+      <Reveal>
+        <Eyebrow>Where I&apos;ve worked</Eyebrow>
+        <SectionTitle>Experience</SectionTitle>
+        <SectionText>
+          Four years of building and running infrastructure — from Kubernetes
+          platforms and Terraform-managed multi-cloud estates to the CI/CD
+          pipelines and gateways that keep them shipping.
+        </SectionText>
+      </Reveal>
+
+      <Reveal delay={80}>
+        <Track>
+          {featured.map((job) => (
+            <Row key={job.id} job={job} compact={false} />
+          ))}
+
+          {showEarlier &&
+            earlier.map((job) => <Row key={job.id} job={job} compact={true} />)}
+        </Track>
+
+        <EarlierWrap>
+          <ToggleButton
+            type="button"
+            $open={showEarlier}
+            aria-expanded={showEarlier}
+            onClick={() => setShowEarlier((open) => !open)}
+          >
+            {showEarlier
+              ? 'Hide earlier roles'
+              : `Show ${earlier.length} earlier roles (2022 – 2023)`}
+            <FiChevronDown aria-hidden="true" />
+          </ToggleButton>
+        </EarlierWrap>
+      </Reveal>
+    </Section>
+  );
+};
 
 export default Experience;
