@@ -5,6 +5,7 @@ import { FiDownload } from 'react-icons/fi';
 
 import { SectionText, SectionTitle } from '../../styles/GlobalComponents';
 import {
+  AvatarRing,
   CtaRow,
   Dot,
   GhostCta,
@@ -16,6 +17,13 @@ import { profile } from '../../constants/constants';
 
 const Hero = () => (
   <LeftSection>
+    {/* Renders only once a real headshot is set in constants.profile.photo. */}
+    {profile.photo && (
+      <AvatarRing>
+        <img src={profile.photo} alt={`${profile.name}, ${profile.role}`} />
+      </AvatarRing>
+    )}
+
     <StatusPill>
       <Dot />
       <span>
@@ -25,20 +33,16 @@ const Hero = () => (
     </StatusPill>
 
     <SectionTitle as="h1" $main>
-      Hi, I&apos;m Melhem. <br />I build and run cloud infrastructure.
+      I build and run <br />
+      cloud infrastructure.
     </SectionTitle>
 
     <SectionText>
-      DevOps engineer with 4+ years across software and infrastructure,
-      currently owning AWS infrastructure and multi-cloud Kubernetes platforms
-      at FxPro. I work mostly in Terraform, Kubernetes, and CI/CD — automating
-      deployments, migrating gateways, and keeping platforms that serve 10+
-      million requests a day boring and reliable.
-      <br />
-      <br />
-      Computer Science graduate of the American University of Beirut, one of
-      only 60 students in Lebanon to receive the USAID scholarship. Certified
-      Kubernetes Administrator and 3x AWS certified.
+      I&apos;m Melhem — a DevOps engineer with 4+ years across software and
+      infrastructure, currently owning AWS infrastructure and multi-cloud
+      Kubernetes platforms at FxPro. Terraform, Kubernetes, and CI/CD are where
+      I live: automating deployments, migrating gateways, and keeping platforms
+      that serve 10+ million requests a day boring and reliable.
     </SectionText>
 
     <CtaRow>

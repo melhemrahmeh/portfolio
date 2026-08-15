@@ -1,7 +1,9 @@
 const theme = {
   fonts: {
-    title: 'Space Grotesk, sans-serif',
-    main: 'Space Grotesk, sans-serif',
+    // Space Grotesk is a display face — great for headings, tiring for long
+    // body copy, so Inter carries the running text.
+    title: '"Space Grotesk", sans-serif',
+    main: 'Inter, system-ui, -apple-system, "Segoe UI", sans-serif',
     mono: 'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace',
   },
   // Colors for layout
@@ -27,6 +29,16 @@ const theme = {
     cyan: '#13ADC7',
     purple: '#945DD6',
     orange: '#F46737',
+    green: '#2EE6A8',
+  },
+  // Per-section background tints so consecutive sections read as distinct
+  // bands rather than one continuous sheet.
+  bands: {
+    none: 'transparent',
+    subtle: 'rgba(255, 255, 255, 0.018)',
+    glow: 'radial-gradient(60% 50% at 50% 0%, rgba(148,93,214,0.10), transparent 70%)',
+    glowCyan:
+      'radial-gradient(60% 50% at 50% 0%, rgba(19,173,199,0.09), transparent 70%)',
   },
   gradients: {
     primary: 'linear-gradient(270deg, #13ADC7 0%, #945DD6 100%)',

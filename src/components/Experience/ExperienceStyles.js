@@ -1,116 +1,134 @@
 import styled from 'styled-components';
 
-export const CardList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  width: 100%;
-  margin: 40px 0 24px;
-
-  @media ${(props) => props.theme.breakpoints.sm} {
-    gap: 20px;
-    margin: 24px 0 8px;
-  }
-`;
-
-export const Card = styled.article`
+export const Track = styled.ol`
   position: relative;
   width: 100%;
-  background: ${(props) => props.theme.colors.surface1};
-  border: 1px solid ${(props) => props.theme.colors.border};
-  border-radius: ${(props) => props.theme.radii.lg};
-  box-shadow: ${(props) => props.theme.shadows.card};
-  padding: 32px;
-  overflow: hidden;
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
+  margin: 36px 0 8px;
+  padding-left: 68px;
 
-  /* accent rail down the left edge */
+  /* the spine */
   &::before {
     content: '';
     position: absolute;
-    inset: 0 auto 0 0;
-    width: 3px;
-    background: ${(props) => props.theme.gradients.primary};
-    opacity: ${(props) => (props.$current ? 1 : 0.35)};
-  }
-
-  &:hover {
-    transform: translateY(-4px);
-    border-color: ${(props) => props.theme.colors.borderStrong};
-    box-shadow: ${(props) => props.theme.shadows.cardHover};
-  }
-
-  @media ${(props) => props.theme.breakpoints.md} {
-    padding: 24px;
+    left: 27px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      ${(props) => props.theme.colors.cyan},
+      ${(props) => props.theme.colors.purple} 45%,
+      transparent
+    );
+    opacity: 0.45;
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    padding: 20px 18px;
+    padding-left: 46px;
+    margin-top: 24px;
+
+    &::before {
+      left: 19px;
+    }
+  }
+`;
+
+export const Entry = styled.li`
+  position: relative;
+  padding-bottom: ${(props) => (props.$compact ? '22px' : '38px')};
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    padding-bottom: ${(props) => (props.$compact ? '18px' : '26px')};
+  }
+`;
+
+/** Circular node sitting on the spine, carrying the company initial. */
+export const Node = styled.span`
+  position: absolute;
+  left: -68px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: ${(props) => (props.$compact ? '40px' : '56px')};
+  height: ${(props) => (props.$compact ? '40px' : '56px')};
+  margin-left: ${(props) => (props.$compact ? '8px' : '0')};
+  border-radius: 50%;
+  font-family: ${(props) => props.theme.fonts.title};
+  font-size: ${(props) => (props.$compact ? '15px' : '20px')};
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  background: ${(props) =>
+    props.$current
+      ? props.theme.gradients.primary
+      : props.theme.colors.surface2};
+  border: 1px solid
+    ${(props) =>
+      props.$current ? 'transparent' : props.theme.colors.borderStrong};
+  box-shadow: 0 0 0 6px ${(props) => props.theme.colors.background1};
+  z-index: 1;
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    left: -46px;
+    width: ${(props) => (props.$compact ? '28px' : '38px')};
+    height: ${(props) => (props.$compact ? '28px' : '38px')};
+    font-size: ${(props) => (props.$compact ? '12px' : '15px')};
+    margin-left: ${(props) => (props.$compact ? '5px' : '0')};
+    box-shadow: 0 0 0 4px ${(props) => props.theme.colors.background1};
+  }
+`;
+
+export const Panel = styled.div`
+  background: ${(props) =>
+    props.$compact ? 'transparent' : props.theme.colors.surface1};
+  border: 1px solid
+    ${(props) => (props.$compact ? 'transparent' : props.theme.colors.border)};
+  border-radius: ${(props) => props.theme.radii.lg};
+  padding: ${(props) => (props.$compact ? '4px 0 0' : '26px 28px')};
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease;
+
+  &:hover {
+    border-color: ${(props) =>
+      props.$compact ? 'transparent' : props.theme.colors.borderStrong};
+  }
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    padding: ${(props) => (props.$compact ? '2px 0 0' : '18px 16px')};
     border-radius: ${(props) => props.theme.radii.md};
   }
 `;
 
-export const CardHeader = styled.header`
+export const TopRow = styled.div`
   display: flex;
-  align-items: flex-start;
-  gap: 18px;
-
-  @media ${(props) => props.theme.breakpoints.sm} {
-    gap: 14px;
-  }
-`;
-
-export const Logo = styled.div`
-  flex-shrink: 0;
-  width: 56px;
-  height: 56px;
-  border-radius: ${(props) => props.theme.radii.md};
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 6px;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  @media ${(props) => props.theme.breakpoints.sm} {
-    width: 44px;
-    height: 44px;
-    padding: 4px;
-  }
-`;
-
-export const HeaderText = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  min-width: 0;
-  flex: 1;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
 `;
 
 export const Role = styled.h3`
-  font-size: 24px;
+  font-size: ${(props) => (props.$compact ? '17px' : '23px')};
   font-weight: 700;
   line-height: 1.25;
   color: ${(props) => props.theme.colors.text};
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    font-size: 18px;
+    font-size: ${(props) => (props.$compact ? '15px' : '18px')};
   }
 `;
 
-export const Company = styled.p`
-  font-size: 16px;
+export const Meta = styled.p`
+  font-size: ${(props) => (props.$compact ? '13px' : '15px')};
   color: ${(props) => props.theme.colors.cyan};
   font-weight: 500;
+  margin-top: 3px;
 
   span {
     color: ${(props) => props.theme.colors.textSubtle};
@@ -118,62 +136,54 @@ export const Company = styled.p`
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    font-size: 13px;
+    font-size: 12px;
   }
 `;
 
-export const DateBadge = styled.span`
+export const Dates = styled.span`
   flex-shrink: 0;
-  align-self: flex-start;
   font-family: ${(props) => props.theme.fonts.mono};
   font-size: 13px;
-  letter-spacing: 0.02em;
-  color: ${(props) => props.theme.colors.textMuted};
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid ${(props) => props.theme.colors.border};
-  border-radius: ${(props) => props.theme.radii.pill};
-  padding: 7px 14px;
+  color: ${(props) => props.theme.colors.textSubtle};
   white-space: nowrap;
 
-  @media ${(props) => props.theme.breakpoints.md} {
-    font-size: 12px;
-    padding: 5px 10px;
-  }
-
   @media ${(props) => props.theme.breakpoints.sm} {
-    display: none;
+    font-size: 11px;
   }
 `;
 
-/* On small screens the date moves under the title instead of the header row. */
-export const DateInline = styled.p`
-  display: none;
-
-  @media ${(props) => props.theme.breakpoints.sm} {
-    display: block;
-    font-family: ${(props) => props.theme.fonts.mono};
-    font-size: 11px;
-    color: ${(props) => props.theme.colors.textSubtle};
-  }
+export const CurrentTag = styled.span`
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: 3px;
+  font-family: ${(props) => props.theme.fonts.mono};
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: ${(props) => props.theme.colors.green};
+  background: rgba(46, 230, 168, 0.1);
+  border: 1px solid rgba(46, 230, 168, 0.3);
+  border-radius: ${(props) => props.theme.radii.pill};
+  padding: 3px 9px;
 `;
 
 export const Highlights = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin: 24px 0 0;
+  gap: 13px;
+  margin-top: 20px;
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    gap: 12px;
-    margin-top: 18px;
+    gap: 11px;
+    margin-top: 14px;
   }
 `;
 
 export const Highlight = styled.li`
   position: relative;
-  padding-left: 22px;
-  font-size: 16px;
-  line-height: 1.65;
+  padding-left: 20px;
+  font-size: 15px;
+  line-height: 1.7;
   color: ${(props) => props.theme.colors.textMuted};
 
   &::before {
@@ -181,27 +191,26 @@ export const Highlight = styled.li`
     position: absolute;
     left: 2px;
     top: 10px;
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: ${(props) => props.theme.gradients.primary};
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
     font-size: 14px;
-    line-height: 1.6;
-    padding-left: 16px;
+    line-height: 1.65;
+    padding-left: 15px;
 
     &::before {
       left: 0;
-      top: 8px;
-      width: 5px;
-      height: 5px;
+      top: 9px;
     }
   }
 `;
 
 export const HighlightLabel = styled.strong`
+  font-family: ${(props) => props.theme.fonts.title};
   color: ${(props) => props.theme.colors.text};
   font-weight: 600;
 `;
@@ -210,13 +219,45 @@ export const TagList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 24px;
-  padding-top: 22px;
+  margin-top: 22px;
+  padding-top: 20px;
   border-top: 1px solid ${(props) => props.theme.colors.border};
 
   @media ${(props) => props.theme.breakpoints.sm} {
     gap: 6px;
-    margin-top: 18px;
-    padding-top: 16px;
+    margin-top: 16px;
+    padding-top: 14px;
   }
+`;
+
+export const ToggleButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-family: ${(props) => props.theme.fonts.mono};
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: ${(props) => props.theme.colors.textMuted};
+  background: none;
+  border: 1px dashed ${(props) => props.theme.colors.borderStrong};
+  border-radius: ${(props) => props.theme.radii.pill};
+  padding: 10px 18px;
+  cursor: pointer;
+  transition: 0.25s ease;
+
+  &:hover {
+    color: #fff;
+    border-style: solid;
+    border-color: ${(props) => props.theme.colors.cyan};
+  }
+
+  svg {
+    transition: transform 0.25s ease;
+    transform: rotate(${(props) => (props.$open ? '180deg' : '0deg')});
+  }
+`;
+
+export const EarlierWrap = styled.div`
+  margin-top: 26px;
 `;

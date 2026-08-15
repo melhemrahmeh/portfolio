@@ -1,22 +1,23 @@
 import Head from 'next/head';
 
 import Acomplishments from '../components/Acomplishments/Acomplishments';
-import BgAnimation from '../components/BackgrooundAnimation/BackgroundAnimation';
 import Certifications from '../components/Certifications/Certifications';
 import Contact from '../components/Contact/Contact';
 import Experience from '../components/Experience/Experience';
 import Hero from '../components/Hero/Hero';
+import TerminalCard from '../components/Hero/TerminalCard';
 import Projects from '../components/Projects/Projects';
 import Technologies from '../components/Technologies/Technologies';
 import Timeline from '../components/TimeLine/TimeLine';
 
 import { Layout } from '../layout/Layout';
-import { Section } from '../styles/GlobalComponents';
+import { Band, HeroGrid, RightSection } from '../styles/GlobalComponents';
 import { profile } from '../constants/constants';
 
 const title = `${profile.name} — DevOps & Cloud Engineer`;
 const description =
   'DevOps Engineer in Limassol, Cyprus. I build and run multi-cloud Kubernetes platforms with Terraform, AWS, Azure, and CI/CD — currently at FxPro. CKA and 3x AWS certified.';
+const ogImage = `${profile.site}/og-card.png`;
 
 const Home = () => (
   <>
@@ -36,18 +37,14 @@ const Home = () => (
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={profile.site} />
-      <meta
-        property="og:image"
-        content={`${profile.site}/images/profile.jpeg`}
-      />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta
-        name="twitter:image"
-        content={`${profile.site}/images/profile.jpeg`}
-      />
+      <meta name="twitter:image" content={ogImage} />
 
       <script
         type="application/ld+json"
@@ -59,6 +56,7 @@ const Home = () => (
             jobTitle: profile.role,
             email: `mailto:${profile.email}`,
             url: profile.site,
+            image: ogImage,
             worksFor: { '@type': 'Organization', name: profile.company },
             address: {
               '@type': 'PostalAddress',
@@ -76,15 +74,28 @@ const Home = () => (
     </Head>
 
     <Layout>
-      <Section $grid id="home">
+      <HeroGrid id="home">
         <Hero />
-        <BgAnimation />
-      </Section>
+        <RightSection>
+          <TerminalCard />
+        </RightSection>
+      </HeroGrid>
+
       <Timeline />
-      <Experience />
+
+      {/* Tinted bands break the page into distinct zones instead of one
+          continuous sheet of identical sections. */}
+      <Band $tint>
+        <Experience />
+      </Band>
+
       <Projects />
-      <Technologies />
-      <Certifications />
+
+      <Band $tint>
+        <Technologies />
+        <Certifications />
+      </Band>
+
       <Acomplishments />
       <Contact />
     </Layout>

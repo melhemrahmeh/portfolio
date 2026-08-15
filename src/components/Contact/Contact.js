@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
@@ -11,6 +11,7 @@ import {
   Field,
   Form,
   FormStatus,
+  HoneyPot,
   Input,
   Label,
   SubmitButton,
@@ -19,10 +20,10 @@ import {
 import {
   Eyebrow,
   Section,
-  SectionDivider,
   SectionText,
   SectionTitle,
 } from '../../styles/GlobalComponents';
+import Reveal from '../Reveal/Reveal';
 import { profile } from '../../constants/constants';
 
 const EMAILJS_SERVICE = 'service_5lbrexw';
@@ -31,9 +32,15 @@ const EMAILJS_PUBLIC_KEY = 'SpHCRXL1ap7PX2DXj';
 
 const EMPTY_FORM = { name: '', email: '', message: '' };
 
+/** Minimum gap between sends, so the EmailJS quota can't be drained in a loop. */
+const THROTTLE_MS = 30_000;
+
 function Contact() {
   const [values, setValues] = useState(EMPTY_FORM);
   const [status, setStatus] = useState('idle');
+  // Bots fill every field they find; humans never see this one.
+  const [trap, setTrap] = useState('');
+  const lastSentAt = useRef(0);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -44,12 +51,27 @@ function Contact() {
     event.preventDefault();
     if (status === 'sending') return;
 
+    // Silently accept honeypot submissions rather than telling the bot why.
+    if (trap) {
+      setStatus('sent');
+      setValues(EMPTY_FORM);
+      return;
+    }
+
+    const since = Date.now() - lastSentAt.current;
+    if (since < THROTTLE_MS) {
+      const wait = Math.ceil((THROTTLE_MS - since) / 1000);
+      toast.info(`Please wait ${wait}s before sending another message.`);
+      return;
+    }
+
     setStatus('sending');
 
     try {
       await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, values, {
         publicKey: EMAILJS_PUBLIC_KEY,
       });
+      lastSentAt.current = Date.now();
       setStatus('sent');
       setValues(EMPTY_FORM);
       toast.success('Message sent — I will get back to you shortly!');
@@ -61,13 +83,14 @@ function Contact() {
 
   return (
     <Section id="contact">
-      <SectionDivider $colorAlt />
-      <Eyebrow>Say hello</Eyebrow>
-      <SectionTitle>Contact</SectionTitle>
-      <SectionText>
-        Interested in working together, or just want to connect? Leave a message
-        below and I&apos;ll get back to you.
-      </SectionText>
+      <Reveal>
+        <Eyebrow>Say hello</Eyebrow>
+        <SectionTitle>Contact</SectionTitle>
+        <SectionText>
+          Interested in working together, or just want to connect? Leave a
+          message below and I&apos;ll get back to you.
+        </SectionText>
+      </Reveal>
 
       <DirectLinks>
         <DirectLink href={`mailto:${profile.email}`}>
@@ -130,6 +153,21 @@ function Contact() {
             onChange={handleChange}
           />
         </Field>
+
+        <HoneyPot aria-hidden="true">
+          <label htmlFor="contact-company">
+            Company (leave this field empty)
+          </label>
+          <input
+            id="contact-company"
+            name="company"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            value={trap}
+            onChange={(event) => setTrap(event.target.value)}
+          />
+        </HoneyPot>
 
         <SubmitButton type="submit" disabled={status === 'sending'}>
           {status === 'sending' ? 'Sending…' : 'Send message'}

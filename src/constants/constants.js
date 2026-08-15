@@ -10,6 +10,9 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/melhem-rahmeh/',
   site: 'https://melhemrahmeh.com',
   resume: '/Melhem-Rahmeh-Resume.pdf',
+  // Drop a square headshot in public/images/ and set the path here — the hero
+  // avatar renders automatically. Left null so no placeholder is shown.
+  photo: null,
 };
 
 export const experience = [
@@ -17,7 +20,6 @@ export const experience = [
     title: 'DevOps Engineer',
     company: 'FxPro',
     location: 'Limassol, Cyprus',
-    image: '/images/fx.png',
     date: 'September 2025 - Present',
     current: true,
     highlights: [
@@ -62,7 +64,6 @@ export const experience = [
     title: 'DevOps Engineer',
     company: 'Murex',
     location: 'Nicosia, Cyprus',
-    image: '/images/murex.png',
     date: 'June 2023 - September 2025',
     highlights: [
       {
@@ -110,7 +111,6 @@ export const experience = [
     title: 'System Analyst',
     company: 'Maids.cc',
     location: 'Remote to Dubai, UAE',
-    image: '/images/maids.png',
     date: 'November 2022 - May 2023',
     highlights: [
       {
@@ -129,7 +129,6 @@ export const experience = [
     title: 'Software Engineer',
     company: 'Asset Science LLC',
     location: 'Beirut, Lebanon',
-    image: '/images/asci.jpg',
     date: 'June 2022 - November 2022',
     highlights: [
       {
@@ -148,7 +147,6 @@ export const experience = [
     title: 'Full Stack Engineer (Intern)',
     company: 'EduPass NGO',
     location: 'Beirut, Lebanon',
-    image: '/images/edupass.png',
     date: 'June 2022',
     highlights: [
       {
@@ -163,7 +161,6 @@ export const experience = [
     title: 'Front End Engineer (Intern)',
     company: 'Bennett & Ranville',
     location: 'Remote',
-    image: '/images/bennett_ranville_cover.jpg',
     date: 'April 2022 - May 2022',
     highlights: [
       {
@@ -218,7 +215,7 @@ export const projects = [
     title: 'IvarGrand',
     description:
       'Freelance project: a marketing website for a Dubai-based company selling car diesel oils, built from scratch and deployed on Netlify.',
-    image: '/images/ivar.PNG',
+    image: '/images/ivar.webp',
     tags: ['HTML', 'CSS', 'JavaScript', 'Netlify'],
     source: 'https://github.com/melhemrahmeh/ivargrand',
     visit: 'https://ivargrand.com/',
@@ -228,7 +225,7 @@ export const projects = [
     title: 'Reddit Bot Detection System',
     description:
       'Bots generate a large share of low-value content on social platforms. This project trains a set of machine learning models that perform Reddit bot detection across different feature sets built from user activity.',
-    image: '/images/reddit.png',
+    image: '/images/reddit.webp',
     tags: ['Python', 'Machine Learning', 'Reddit API', 'MongoDB'],
     source: 'https://github.com/melhemrahmeh/reddit_bot_detection',
     visit: null,
@@ -238,7 +235,7 @@ export const projects = [
     title: 'CourSeera — AUB Course Query System',
     description:
       'Downloads and parses all 26 files listing the courses taught in the current semester at the American University of Beirut, builds an in-memory database, and exposes it through a CLI and a Telegram bot.',
-    image: '/images/courseera.png',
+    image: '/images/courseera.webp',
     tags: ['Java', 'Maven', 'JUnit', 'Telegram Bot API'],
     source: 'https://github.com/melhemrahmeh/CourseeraFactory',
     visit: null,
@@ -248,7 +245,7 @@ export const projects = [
     title: 'Random Fact Generator',
     description:
       'A small single-page app that pulls and displays random facts from external APIs.',
-    image: '/images/randomfact.png',
+    image: '/images/randomfact.webp',
     tags: ['React JS', 'Vite', 'pnpm'],
     source: 'https://github.com/melhemrahmeh/random-fact-generator',
     visit: 'https://randomlytrue.netlify.app/',
@@ -258,7 +255,7 @@ export const projects = [
     title: 'Currency Converter',
     description:
       'Converts amounts between currencies using live exchange rates from the OANDA API.',
-    image: '/images/money.png',
+    image: '/images/money.webp',
     tags: ['React JS', 'Vite', 'OANDA API'],
     source: 'https://github.com/melhemrahmeh/currency-converter',
     visit: 'https://moneyconvert.netlify.app/',
@@ -268,7 +265,7 @@ export const projects = [
     title: 'Quiz Cloud',
     description:
       'A practice app containing questions and answers for several cloud certification exams.',
-    image: '/images/quiz.png',
+    image: '/images/quiz.webp',
     tags: ['React JS', 'Vite', 'pnpm'],
     source: 'https://github.com/melhemrahmeh/quizcloud',
     visit: 'https://quizcloud-test.netlify.app/',

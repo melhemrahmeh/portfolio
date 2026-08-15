@@ -7,30 +7,87 @@ import styled from 'styled-components';
  */
 
 export const Section = styled.section`
-  display: ${(props) => (props.$grid ? 'grid' : 'flex')};
-  flex-direction: ${(props) => (props.$row ? 'row' : 'column')};
-  padding: ${(props) => (props.$nopadding ? '0' : '32px 48px 0')};
+  display: flex;
+  flex-direction: column;
+  padding: 72px 48px;
   margin: 0 auto;
   max-width: 1040px;
   width: 100%;
   box-sizing: content-box;
   position: relative;
-  grid-template-columns: ${(props) => (props.$grid ? '1fr 1fr' : 'none')};
-  align-items: ${(props) => (props.$grid ? 'center' : 'stretch')};
-  gap: ${(props) => (props.$grid ? '32px' : '0')};
 
   @media ${(props) => props.theme.breakpoints.md} {
-    padding: ${(props) => (props.$nopadding ? '0' : '24px 32px 0')};
-    grid-template-columns: 1fr;
-    flex-direction: column;
+    padding: 56px 32px;
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    padding: ${(props) => (props.$nopadding ? '0' : '16px 16px 0')};
+    padding: 44px 16px;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    flex-direction: column;
+  }
+`;
+
+/** Two-column hero: copy on the left, terminal card on the right. */
+export const HeroGrid = styled.section`
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 48px;
+  margin: 0 auto;
+  max-width: 1040px;
+  width: 100%;
+  box-sizing: content-box;
+  padding: 56px 48px 72px;
+
+  @media ${(props) => props.theme.breakpoints.md} {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 32px 32px 48px;
+  }
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    gap: 24px;
+    padding: 16px 16px 40px;
+    box-sizing: border-box;
+  }
+`;
+
+export const RightSection = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  min-width: 0;
+
+  @media ${(props) => props.theme.breakpoints.md} {
+    justify-content: stretch;
+  }
+`;
+
+/**
+ * Full-bleed tinted zone. Groups related sections so the page reads as a few
+ * distinct bands rather than one uninterrupted column of cards.
+ */
+export const Band = styled.div`
+  position: relative;
+  width: 100%;
+  background: ${(props) =>
+    props.$tint ? props.theme.bands.subtle : 'transparent'};
+  border-top: 1px solid ${(props) => props.theme.colors.border};
+  border-bottom: 1px solid ${(props) => props.theme.colors.border};
+
+  /* soft glow anchored to the top of the band */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: ${(props) => props.theme.bands.glow};
+  }
+
+  > * {
+    position: relative;
   }
 `;
 
@@ -81,29 +138,6 @@ export const SectionText = styled.p`
     font-size: 15px;
     line-height: 26px;
     padding-bottom: 16px;
-  }
-`;
-
-export const SectionDivider = styled.div`
-  width: 64px;
-  height: 6px;
-  border-radius: 10px;
-  flex-shrink: 0;
-  background: ${(props) =>
-    props.$colorAlt
-      ? props.theme.gradients.alt
-      : props.theme.gradients.primary};
-
-  margin: ${(props) => (props.$divider ? '4rem 0' : '')};
-
-  @media ${(props) => props.theme.breakpoints.md} {
-    width: 48px;
-    height: 4px;
-  }
-
-  @media ${(props) => props.theme.breakpoints.sm} {
-    width: 32px;
-    height: 3px;
   }
 `;
 

@@ -1,64 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FiChevronDown } from 'react-icons/fi';
 
 import {
-  Card,
-  CardHeader,
-  Company,
-  DateBadge,
-  DateInline,
-  HeaderText,
+  CurrentTag,
+  Dates,
+  EarlierWrap,
+  Entry,
   Highlight,
   HighlightLabel,
   Highlights,
-  Logo,
+  Meta,
+  Node,
+  Panel,
   Role,
   TagList,
-  CardList,
+  ToggleButton,
+  TopRow,
+  Track,
 } from './ExperienceStyles';
 import {
   Chip,
   Eyebrow,
   Section,
-  SectionDivider,
   SectionText,
   SectionTitle,
 } from '../../styles/GlobalComponents';
+import Reveal from '../Reveal/Reveal';
 import { experience } from '../../constants/constants';
 
-const Experience = () => (
-  <Section id="experience">
-    <SectionDivider />
-    <Eyebrow>Where I&apos;ve worked</Eyebrow>
-    <SectionTitle>Experience</SectionTitle>
-    <SectionText>
-      Four years of building and running infrastructure — from Kubernetes
-      platforms and Terraform-managed multi-cloud estates to the CI/CD pipelines
-      and gateways that keep them shipping.
-    </SectionText>
+/** The two most recent roles carry the detail; older ones are summarised. */
+const FEATURED_COUNT = 2;
 
-    <CardList>
-      {experience.map((job) => (
-        <Card key={job.id} $current={job.current}>
-          <CardHeader>
-            {job.image && (
-              <Logo>
-                <img
-                  src={job.image}
-                  alt={`${job.company} logo`}
-                  loading="lazy"
-                />
-              </Logo>
-            )}
-            <HeaderText>
-              <Role>{job.title}</Role>
-              <Company>
-                {job.company} <span>· {job.location}</span>
-              </Company>
-              <DateInline>{job.date}</DateInline>
-            </HeaderText>
-            <DateBadge>{job.date}</DateBadge>
-          </CardHeader>
+const initialOf = (company) => company.charAt(0).toUpperCase();
 
+const Row = ({ job, compact }) => (
+  <Entry $compact={compact}>
+    <Node $compact={compact} $current={job.current} aria-hidden="true">
+      {initialOf(job.company)}
+    </Node>
+
+    <Panel $compact={compact}>
+      <TopRow>
+        <div>
+          <Role $compact={compact}>
+            {job.title}
+            {job.current && <CurrentTag>Current</CurrentTag>}
+          </Role>
+          <Meta $compact={compact}>
+            {job.company} <span>· {job.location}</span>
+          </Meta>
+        </div>
+        <Dates>{job.date}</Dates>
+      </TopRow>
+
+      {!compact && (
+        <>
           <Highlights>
             {job.highlights.map((item) => (
               <Highlight key={item.label}>
@@ -76,10 +72,56 @@ const Experience = () => (
               ))}
             </TagList>
           )}
-        </Card>
-      ))}
-    </CardList>
-  </Section>
+        </>
+      )}
+    </Panel>
+  </Entry>
 );
+
+const Experience = () => {
+  const [showEarlier, setShowEarlier] = useState(false);
+
+  const featured = experience.slice(0, FEATURED_COUNT);
+  const earlier = experience.slice(FEATURED_COUNT);
+
+  return (
+    <Section id="experience">
+      <Reveal>
+        <Eyebrow>Where I&apos;ve worked</Eyebrow>
+        <SectionTitle>Experience</SectionTitle>
+        <SectionText>
+          Four years of building and running infrastructure — from Kubernetes
+          platforms and Terraform-managed multi-cloud estates to the CI/CD
+          pipelines and gateways that keep them shipping.
+        </SectionText>
+      </Reveal>
+
+      <Reveal delay={80}>
+        <Track>
+          {featured.map((job) => (
+            <Row key={job.id} job={job} compact={false} />
+          ))}
+
+          {showEarlier &&
+            earlier.map((job) => <Row key={job.id} job={job} compact={true} />)}
+        </Track>
+
+        <EarlierWrap>
+          <ToggleButton
+            type="button"
+            $open={showEarlier}
+            aria-expanded={showEarlier}
+            onClick={() => setShowEarlier((open) => !open)}
+          >
+            {showEarlier
+              ? 'Hide earlier roles'
+              : `Show ${earlier.length} earlier roles (2022 – 2023)`}
+            <FiChevronDown aria-hidden="true" />
+          </ToggleButton>
+        </EarlierWrap>
+      </Reveal>
+    </Section>
+  );
+};
 
 export default Experience;

@@ -1,62 +1,83 @@
 import React from 'react';
-import { FiAward } from 'react-icons/fi';
+import { SiAmazonwebservices, SiKubernetes } from 'react-icons/si';
+import { FiCode } from 'react-icons/fi';
 import { IoSchoolOutline } from 'react-icons/io5';
 
 import {
   CertBody,
-  CertCard,
-  CertGrid,
-  CertIcon,
   CertIssuer,
+  CertList,
+  CertMark,
   CertName,
+  CertRow,
   EducationCard,
+  EducationIcon,
   EducationText,
 } from './CertificationsStyles';
 import {
   Eyebrow,
   Section,
-  SectionDivider,
   SectionText,
   SectionTitle,
 } from '../../styles/GlobalComponents';
+import Reveal from '../Reveal/Reveal';
 import { certifications } from '../../constants/constants';
+
+/** Brand marks keyed off the issuer, with each vendor's own colour. */
+const marks = {
+  kubernetes: { icon: <SiKubernetes size="1.25rem" />, color: '#326CE5' },
+  aws: { icon: <SiAmazonwebservices size="1.25rem" />, color: '#FF9900' },
+  algoexpert: { icon: <FiCode size="1.15rem" />, color: '#13ADC7' },
+};
+
+const markFor = (cert) => {
+  if (cert.name.includes('Kubernetes')) return marks.kubernetes;
+  if (cert.name.startsWith('AWS')) return marks.aws;
+  return marks.algoexpert;
+};
 
 const Certifications = () => (
   <Section id="certifications">
-    <SectionDivider $colorAlt />
-    <Eyebrow>Education & credentials</Eyebrow>
-    <SectionTitle>Certifications</SectionTitle>
-    <SectionText>
-      Formal proof of the things I work on daily — Kubernetes, AWS, and system
-      design.
-    </SectionText>
+    <Reveal>
+      <Eyebrow>Education & credentials</Eyebrow>
+      <SectionTitle>Certifications</SectionTitle>
+      <SectionText>
+        Formal proof of the things I work on daily — Kubernetes, AWS, and system
+        design.
+      </SectionText>
+    </Reveal>
 
-    <EducationCard>
-      <CertIcon aria-hidden="true">
-        <IoSchoolOutline size="1.4rem" />
-      </CertIcon>
-      <EducationText>
-        <h3>American University of Beirut (AUB)</h3>
-        <p>
-          Bachelor of Science in Computer Science · USAID full scholarship ·
-          Dean&apos;s Honor List
-        </p>
-      </EducationText>
-    </EducationCard>
+    <Reveal delay={80}>
+      <EducationCard>
+        <EducationIcon aria-hidden="true">
+          <IoSchoolOutline size="1.4rem" />
+        </EducationIcon>
+        <EducationText>
+          <h3>American University of Beirut (AUB)</h3>
+          <p>
+            Bachelor of Science in Computer Science · USAID full scholarship ·
+            Dean&apos;s Honor List
+          </p>
+        </EducationText>
+      </EducationCard>
 
-    <CertGrid>
-      {certifications.map((cert) => (
-        <CertCard key={cert.id}>
-          <CertIcon aria-hidden="true">
-            <FiAward size="1.3rem" />
-          </CertIcon>
-          <CertBody>
-            <CertName>{cert.name}</CertName>
-            <CertIssuer>{cert.issuer}</CertIssuer>
-          </CertBody>
-        </CertCard>
-      ))}
-    </CertGrid>
+      <CertList>
+        {certifications.map((cert) => {
+          const mark = markFor(cert);
+          return (
+            <CertRow key={cert.id}>
+              <CertMark $color={mark.color} aria-hidden="true">
+                {mark.icon}
+              </CertMark>
+              <CertBody>
+                <CertName>{cert.name}</CertName>
+                <CertIssuer>{cert.issuer}</CertIssuer>
+              </CertBody>
+            </CertRow>
+          );
+        })}
+      </CertList>
+    </Reveal>
   </Section>
 );
 

@@ -144,6 +144,18 @@ export const DirectLink = styled.a`
   }
 `;
 
+/**
+ * Spam trap. Kept out of the layout and the tab order without display:none,
+ * which some bots specifically skip.
+ */
+export const HoneyPot = styled.div`
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+`;
+
 export const FormStatus = styled.p`
   font-size: 14px;
   line-height: 1.5;

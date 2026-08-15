@@ -5,7 +5,13 @@ export const GridContainer = styled.ul`
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 28px;
   width: 100%;
-  margin: 40px 0 24px;
+  margin: 36px 0 8px;
+
+  /* each grid cell is a Reveal wrapper rendered as <li> — stretch it so the
+     cards in a row share a height */
+  > li {
+    display: flex;
+  }
 
   @media ${(props) => props.theme.breakpoints.sm} {
     grid-template-columns: 1fr;
@@ -14,7 +20,8 @@ export const GridContainer = styled.ul`
   }
 `;
 
-export const Card = styled.li`
+export const Card = styled.article`
+  flex: 1;
   display: flex;
   flex-direction: column;
   background: ${(props) => props.theme.colors.surface1};

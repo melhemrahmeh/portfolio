@@ -1,87 +1,103 @@
 import styled from 'styled-components';
 
-export const List = styled.ul`
-  list-style-type: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
+export const StackList = styled.dl`
   width: 100%;
-  margin: 40px 0 24px;
+  margin: 36px 0 8px;
+  border-top: 1px solid ${(props) => props.theme.colors.border};
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    margin-top: 24px;
+  }
+`;
+
+export const StackRow = styled.div`
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 28px;
+  align-items: start;
+  padding: 22px 4px;
+  border-bottom: 1px solid ${(props) => props.theme.colors.border};
+  transition: background 0.25s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.015);
+  }
+
+  @media ${(props) => props.theme.breakpoints.md} {
+    grid-template-columns: 150px 1fr;
+    gap: 20px;
+  }
 
   @media ${(props) => props.theme.breakpoints.sm} {
     grid-template-columns: 1fr;
-    gap: 16px;
-    margin: 24px 0 8px;
+    gap: 10px;
+    padding: 16px 2px;
   }
 `;
 
-export const ListItem = styled.li`
-  display: flex;
-  flex-direction: column;
-  background: ${(props) => props.theme.colors.surface1};
-  border: 1px solid ${(props) => props.theme.colors.border};
-  border-radius: ${(props) => props.theme.radii.lg};
-  padding: 26px 24px;
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease;
-
-  &:hover {
-    transform: translateY(-4px);
-    border-color: ${(props) => props.theme.colors.borderStrong};
-  }
-
-  @media ${(props) => props.theme.breakpoints.sm} {
-    padding: 20px 18px;
-    border-radius: ${(props) => props.theme.radii.md};
-  }
-`;
-
-export const IconBadge = styled.div`
+export const GroupLabel = styled.dt`
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: ${(props) => props.theme.radii.md};
-  background: rgba(148, 93, 214, 0.14);
-  border: 1px solid rgba(148, 93, 214, 0.28);
-  color: ${(props) => props.theme.colors.cyan};
-  margin-bottom: 18px;
+  gap: 10px;
+  font-family: ${(props) => props.theme.fonts.title};
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: ${(props) => props.theme.colors.text};
+
+  svg {
+    flex-shrink: 0;
+    color: ${(props) => props.theme.colors.cyan};
+  }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 14px;
+    font-size: 13px;
+    color: ${(props) => props.theme.colors.cyan};
   }
 `;
 
-export const ListContainer = styled.div`
+export const GroupBody = styled.dd`
   display: flex;
   flex-direction: column;
-  flex: 1;
+  gap: 10px;
+  margin: 0;
+  min-width: 0;
 `;
 
-export const ListTitle = styled.h3`
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 1.3;
-  letter-spacing: 0.01em;
-  color: ${(props) => props.theme.colors.text};
-  margin-bottom: 14px;
-
-  @media ${(props) => props.theme.breakpoints.sm} {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-`;
-
-export const SkillList = styled.ul`
+export const CoreList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+`;
+
+/** The primary tools in a group — visually weighted above the rest. */
+export const CoreChip = styled.span`
+  display: inline-flex;
+  align-items: center;
+  font-family: ${(props) => props.theme.fonts.title};
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 8px 14px;
+  border-radius: ${(props) => props.theme.radii.pill};
+  color: ${(props) => props.theme.colors.text};
+  background: rgba(19, 173, 199, 0.1);
+  border: 1px solid rgba(19, 173, 199, 0.35);
+  white-space: nowrap;
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    gap: 6px;
+    font-size: 12px;
+    padding: 7px 11px;
+  }
+`;
+
+/** Everything else, as quiet running text rather than another wall of pills. */
+export const AlsoLine = styled.p`
+  font-size: 14px;
+  line-height: 1.7;
+  color: ${(props) => props.theme.colors.textSubtle};
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    font-size: 12.5px;
   }
 `;
