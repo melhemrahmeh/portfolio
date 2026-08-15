@@ -1,7 +1,27 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const AnimationWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  svg {
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    overflow: visible;
+  }
+
+  /* the hero stacks to a single column here, so the decoration is dropped */
+  @media ${(props) => props.theme.breakpoints.md} {
+    display: none;
+  }
+`;
 
 const BackgroundAnimation = () => (
-  <div>
+  <AnimationWrapper aria-hidden="true">
     <svg
       className="BgAnimation__svg"
       viewBox="0 0 602 602"
@@ -54,7 +74,7 @@ const BackgroundAnimation = () => (
         transform="translate(-295.027 -193.118)"
         rx="1.07306"
         ry="1.07433"
-        fill="#46737"
+        fill="#F46737"
       >
         <animateMotion
           dur="5s"
@@ -359,7 +379,7 @@ const BackgroundAnimation = () => (
         </linearGradient>
       </defs>
     </svg>
-  </div>
+  </AnimationWrapper>
 );
 
 export default BackgroundAnimation;

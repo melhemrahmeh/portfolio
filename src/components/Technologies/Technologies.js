@@ -1,124 +1,156 @@
 import React from 'react';
+import { DiDatabase, DiGitMerge, DiReact } from 'react-icons/di';
+import { SiKubernetes, SiTerraform } from 'react-icons/si';
+import { FiCode, FiShield } from 'react-icons/fi';
+
 import {
-  DiFirebase,
-  DiReact,
-  DiZend,
-  DiDatabase,
-  DiGitMerge,
-  DiStreamline,
-  DiPython,
-  DiDocker,
-} from 'react-icons/di';
-import {
+  Chip,
+  Eyebrow,
   Section,
   SectionDivider,
   SectionText,
   SectionTitle,
 } from '../../styles/GlobalComponents';
 import {
+  IconBadge,
   List,
   ListContainer,
   ListItem,
-  ListParagraph,
   ListTitle,
+  SkillList,
 } from './TechnologiesStyles';
+
+const stack = [
+  {
+    title: 'Cloud & Containers',
+    icon: <SiKubernetes size="1.7rem" />,
+    skills: [
+      'AWS',
+      'Azure',
+      'Kubernetes',
+      'Docker',
+      'Helm',
+      'EKS / AKS',
+      'API Gateway',
+      'Lambda',
+      'Route53',
+      'Load Balancers',
+    ],
+  },
+  {
+    title: 'Infrastructure as Code',
+    icon: <SiTerraform size="1.7rem" />,
+    skills: [
+      'Terraform',
+      'Ansible',
+      'Linux',
+      'Bash',
+      'HAProxy',
+      'Envoy Gateway',
+      'Kong',
+      'Nginx',
+    ],
+  },
+  {
+    title: 'CI/CD & Automation',
+    icon: <DiGitMerge size="2rem" />,
+    skills: [
+      'Jenkins',
+      'GitLab CI',
+      'GitHub Actions',
+      'ArgoCD',
+      'Nexus',
+      'Jenkins Shared Libraries',
+      'Git',
+    ],
+  },
+  {
+    title: 'Programming',
+    icon: <FiCode size="1.7rem" />,
+    skills: [
+      'Python',
+      'Go',
+      'Java',
+      'Groovy',
+      'JavaScript',
+      'C++',
+      'C#',
+      'Dart',
+      'SQL',
+    ],
+  },
+  {
+    title: 'Observability & Security',
+    icon: <FiShield size="1.7rem" />,
+    skills: [
+      'Prometheus',
+      'Grafana',
+      'OpenTelemetry',
+      'Splunk',
+      'HashiCorp Vault',
+      'IAM',
+      'SSL/TLS',
+      'Tenable',
+      'Artifact Scanning',
+    ],
+  },
+  {
+    title: 'Databases & Messaging',
+    icon: <DiDatabase size="2rem" />,
+    skills: [
+      'PostgreSQL',
+      'AWS RDS / Aurora',
+      'Redis',
+      'MSSQL',
+      'Oracle',
+      'Sybase',
+      'MongoDB',
+      'ActiveMQ',
+    ],
+  },
+  {
+    title: 'Web & App Development',
+    icon: <DiReact size="2rem" />,
+    skills: [
+      'React JS',
+      'Next.js',
+      'Node.js',
+      'Express',
+      'Django',
+      'FastAPI',
+      'Flutter',
+      'Electron JS',
+    ],
+  },
+];
 
 const Technologies = () => (
   <Section id="tech">
-    <SectionDivider divider />
+    <SectionDivider />
+    <Eyebrow>What I work with</Eyebrow>
     <SectionTitle>Technologies</SectionTitle>
     <SectionText>
-      I have worked with a lot of technologies. <br />
-      From Java, Python, C++, Machine Learning, Web Development to DevOps
-      Engineering!
+      The tools I reach for day to day, weighted towards infrastructure,
+      automation, and everything that gets code safely into production.
     </SectionText>
+
     <List>
-      <ListItem>
-        <picture>
-          <DiStreamline size="3rem" />
-        </picture>
-        <ListContainer>
-          <ListTitle>Programming</ListTitle>
-          <ListParagraph>
-            Proficient in Python, Java, Javascript, Object Oriented Programming,
-            Algorithms, Data Structures, Problem Solving.
-            <br /> Worked with C++ , C#, Assembly (MIPS) , Dart, Groovy, GoLang
-          </ListParagraph>
-        </ListContainer>
-      </ListItem>
-
-      <ListItem>
-        <picture>
-          <DiReact size="3rem" />
-        </picture>
-        <ListContainer>
-          <ListTitle>Front-End</ListTitle>
-          <ListParagraph>
-            React.js, Next.js, HTML, CSS, JavaScript
-            <br /> Bootstrap, JQuery , Tailwind, and State Management (Redux,
-            Zustand)
-            <br />
-            Mobile Dev (React Native , Flutter)
-          </ListParagraph>
-        </ListContainer>
-      </ListItem>
-
-      <ListItem>
-        <picture>
-          <DiFirebase size="3rem" />
-        </picture>
-        <ListContainer>
-          <ListTitle>Back-End & API</ListTitle>
-          <ListParagraph>
-            Firebase, Azure Function in C#, AWS Lambda in JS
-            <br />
-            Express.js, Node.js, Nest.js, Django, Fast API
-          </ListParagraph>
-        </ListContainer>
-      </ListItem>
-      <ListItem>
-        <picture>
-          <DiDatabase size="3rem" />
-        </picture>
-        <ListContainer>
-          <ListTitle>Databases</ListTitle>
-          <ListParagraph>
-            MySQL, PostgreSQL, MongoBD, SQL Server, Sybase SQL, Firestore
-          </ListParagraph>
-        </ListContainer>
-      </ListItem>
-
-      <ListItem>
-        <picture>
-          <DiGitMerge size="3rem" />
-        </picture>
-        <ListContainer>
-          <ListTitle>Tools</ListTitle>
-          <ListParagraph>
-            Agile Development (Scrum), REST APIs, Unit Testing (Junit, Google
-            Test) , Github, Bitbucket, , Azure DevOps, Netlify, Vercel, Heroku,
-            ServiceNow, ActiveMQ, Machine Learning
-          </ListParagraph>
-        </ListContainer>
-      </ListItem>
-      <ListItem>
-        <picture>
-          <DiDocker size="3rem" />
-        </picture>
-        <ListContainer>
-          <ListTitle>DevOps & Cloud</ListTitle>
-          <ListParagraph>
-            Linux, Bash Scripting, Micorservices
-            <br />
-            AWS, Azure, Oracle Cloud, Digital Ocean
-            <br />
-            Docker, Kubernetes, Jenkins, Ansible, Splunk
-            <br /> Git, Github Actions, Netlify, Vercel, Heroku, Github Actions
-          </ListParagraph>
-        </ListContainer>
-      </ListItem>
+      {stack.map((group) => (
+        <ListItem key={group.title}>
+          <IconBadge aria-hidden="true">{group.icon}</IconBadge>
+          <ListContainer>
+            <ListTitle>{group.title}</ListTitle>
+            <SkillList>
+              {group.skills.map((skill) => (
+                <li key={skill}>
+                  <Chip>{skill}</Chip>
+                </li>
+              ))}
+            </SkillList>
+          </ListContainer>
+        </ListItem>
+      ))}
     </List>
-    <SectionDivider colorAlt />
   </Section>
 );
 

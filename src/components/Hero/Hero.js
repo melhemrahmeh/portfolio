@@ -1,46 +1,70 @@
 import React from 'react';
+import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
+import { HiOutlineMail } from 'react-icons/hi';
+import { FiDownload } from 'react-icons/fi';
+
+import { SectionText, SectionTitle } from '../../styles/GlobalComponents';
 import {
-  Section,
-  SectionText,
-  SectionTitle,
-} from '../../styles/GlobalComponents';
-import Button from '../../styles/GlobalComponents/Button';
-import { LeftSection } from './HeroStyles';
+  CtaRow,
+  Dot,
+  GhostCta,
+  LeftSection,
+  PrimaryCta,
+  StatusPill,
+} from './HeroStyles';
+import { profile } from '../../constants/constants';
 
 const Hero = () => (
-  <Section row nopadding>
-    <LeftSection>
-      <SectionTitle main center>
-        Hello, I'm Melhem Rahmeh <br />
-        Welcome!
-      </SectionTitle>
+  <LeftSection>
+    <StatusPill>
+      <Dot />
+      <span>
+        <strong>{profile.role}</strong> at {profile.company} ·{' '}
+        {profile.location}
+      </span>
+    </StatusPill>
 
-      <SectionText>
-        I am a Computer Science graduate from the American University of Beirut,
-        and one of only 60 students in Lebanon to receive the prestigious USAID
-        scholarship. I have a strong foundation in software development and a
-        growing focus on DevOps and cloud engineering.
-        <br />
-        <br />
-        Over the past 3+ years, I have built a diverse technical background,
-        including roles as a Software Engineer at Asset Science, System Analyst
-        at Maids.cc, and for the last 2 years, DevOps Engineer at Murex. I
-        specialize in automating deployments, managing cloud infrastructure, and
-        optimizing CI/CD pipelines.
-        <br />
-        <br />I am passionate about solving problems, streamlining processes,
-        and delivering scalable, reliable solutions in dynamic environments.
-      </SectionText>
+    <SectionTitle as="h1" $main>
+      Hi, I&apos;m Melhem. <br />I build and run cloud infrastructure.
+    </SectionTitle>
 
-      <Button
-        onClick={() =>
-          (window.location.href = 'https://www.linkedin.com/in/melhem-rahmeh/')
-        }
+    <SectionText>
+      DevOps engineer with 4+ years across software and infrastructure,
+      currently owning AWS infrastructure and multi-cloud Kubernetes platforms
+      at FxPro. I work mostly in Terraform, Kubernetes, and CI/CD — automating
+      deployments, migrating gateways, and keeping platforms that serve 10+
+      million requests a day boring and reliable.
+      <br />
+      <br />
+      Computer Science graduate of the American University of Beirut, one of
+      only 60 students in Lebanon to receive the USAID scholarship. Certified
+      Kubernetes Administrator and 3x AWS certified.
+    </SectionText>
+
+    <CtaRow>
+      <PrimaryCta href="#contact">
+        <HiOutlineMail aria-hidden="true" /> Get in touch
+      </PrimaryCta>
+      <GhostCta
+        href={profile.resume}
+        target="_blank"
+        rel="noopener noreferrer"
+        download
       >
-        Learn More
-      </Button>
-    </LeftSection>
-  </Section>
+        <FiDownload aria-hidden="true" /> Résumé
+      </GhostCta>
+      <GhostCta
+        href={profile.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <AiFillLinkedin aria-hidden="true" /> LinkedIn
+      </GhostCta>
+      <GhostCta href={profile.github} target="_blank" rel="noopener noreferrer">
+        <AiFillGithub aria-hidden="true" /> GitHub
+      </GhostCta>
+    </CtaRow>
+  </LeftSection>
 );
 
 export default Hero;

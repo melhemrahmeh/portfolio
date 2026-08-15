@@ -1,128 +1,84 @@
 import React from 'react';
+
 import {
-  BlogCard,
-  CardInfo,
-  ExternalLinks,
-  GridContainer,
-  HeaderThree,
-  HeaderFour,
-  Hr,
-  Tag,
+  Card,
+  CardHeader,
+  Company,
+  DateBadge,
+  DateInline,
+  HeaderText,
+  Highlight,
+  HighlightLabel,
+  Highlights,
+  Logo,
+  Role,
   TagList,
-  TitleContent,
-  UtilityList,
-  Img,
-} from './ProjectsStyles';
+  CardList,
+} from './ExperienceStyles';
 import {
+  Chip,
+  Eyebrow,
   Section,
   SectionDivider,
+  SectionText,
   SectionTitle,
 } from '../../styles/GlobalComponents';
 import { experience } from '../../constants/constants';
 
 const Experience = () => (
-  <Section nopadding id="experience">
+  <Section id="experience">
     <SectionDivider />
-    <SectionTitle main>Experience</SectionTitle>
-    <GridContainer>
-      {experience.map((p, i) => {
-        // Filter out empty lines from description
-        const descriptionItems = p.description
-          .split('\n')
-          .filter((item) => item.trim() !== '');
+    <Eyebrow>Where I&apos;ve worked</Eyebrow>
+    <SectionTitle>Experience</SectionTitle>
+    <SectionText>
+      Four years of building and running infrastructure — from Kubernetes
+      platforms and Terraform-managed multi-cloud estates to the CI/CD pipelines
+      and gateways that keep them shipping.
+    </SectionText>
 
-        return (
-          <BlogCard key={`exp-${i}-${p.company.replace(/\s+/g, '-')}`}>
-            <TitleContent>
-              {p.image && (
-                <Img
-                  style={{ backgroundColor: 'white' }}
-                  src={p.image}
-                  alt={`${p.company} logo`}
+    <CardList>
+      {experience.map((job) => (
+        <Card key={job.id} $current={job.current}>
+          <CardHeader>
+            {job.image && (
+              <Logo>
+                <img
+                  src={job.image}
+                  alt={`${job.company} logo`}
                   loading="lazy"
                 />
-              )}
-              <Hr />
-              <HeaderThree title>{p.title}</HeaderThree>
-              <HeaderFour title>
-                {p.company} | {p.date}
-              </HeaderFour>
-              <Hr />
-            </TitleContent>
-
-            <CardInfo className="card-info">
-              {descriptionItems.length > 0 ? (
-                <ul
-                  style={{
-                    color: 'white',
-                    paddingLeft: '20px',
-                    listStyleType: 'none',
-                    margin: 0,
-                  }}
-                >
-                  {descriptionItems.map((item, index) => (
-                    <li
-                      key={`desc-${i}-${index}`}
-                      style={{
-                        marginBottom: '8px',
-                        position: 'relative',
-                        paddingLeft: '1rem',
-                      }}
-                    >
-                      <span
-                        style={{
-                          position: 'absolute',
-                          left: 0,
-                        }}
-                      >
-                        •
-                      </span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p style={{ color: 'white' }}>No description provided</p>
-              )}
-            </CardInfo>
-
-            <div>
-              <Hr />
-              {p.tags?.length > 0 && (
-                <TagList>
-                  {p.tags.map((t, i) => (
-                    <Tag key={`tag-${i}-${t.replace(/\s+/g, '-')}`}>{t}</Tag>
-                  ))}
-                </TagList>
-              )}
-            </div>
-
-            {(p.visit || p.source) && (
-              <UtilityList>
-                {p.visit && (
-                  <ExternalLinks
-                    href={p.visit}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Code
-                  </ExternalLinks>
-                )}
-                {p.source && (
-                  <ExternalLinks
-                    href={p.source}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Source
-                  </ExternalLinks>
-                )}
-              </UtilityList>
+              </Logo>
             )}
-          </BlogCard>
-        );
-      })}
-    </GridContainer>
+            <HeaderText>
+              <Role>{job.title}</Role>
+              <Company>
+                {job.company} <span>· {job.location}</span>
+              </Company>
+              <DateInline>{job.date}</DateInline>
+            </HeaderText>
+            <DateBadge>{job.date}</DateBadge>
+          </CardHeader>
+
+          <Highlights>
+            {job.highlights.map((item) => (
+              <Highlight key={item.label}>
+                <HighlightLabel>{item.label}:</HighlightLabel> {item.text}
+              </Highlight>
+            ))}
+          </Highlights>
+
+          {job.tags?.length > 0 && (
+            <TagList>
+              {job.tags.map((tag) => (
+                <li key={tag}>
+                  <Chip>{tag}</Chip>
+                </li>
+              ))}
+            </TagList>
+          )}
+        </Card>
+      ))}
+    </CardList>
   </Section>
 );
 

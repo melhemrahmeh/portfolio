@@ -1,127 +1,118 @@
-import { IoIosArrowDropdown } from 'react-icons/io';
+import Link from 'next/link';
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 2rem;
-  padding: 1rem;
-  padding-top: 2rem;
+export const Container = styled.header`
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  background: rgba(15, 22, 36, 0.82);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid ${(props) => props.theme.colors.border};
+`;
 
-  @media ${(props) => props.theme.breakpoints.sm} {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(2, 60px);
-    grid-column-gap: 0.5rem;
-    grid-row-gap: 0.5rem;
+export const Inner = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px 24px;
+
+  @media ${(props) => props.theme.breakpoints.md} {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+`;
+
+export const Brand = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: ${(props) => props.theme.colors.text};
+  transition: 0.3s ease;
+
+  &:hover {
+    color: ${(props) => props.theme.colors.cyan};
   }
 `;
 
 export const Span = styled.span`
-  font-size: 2rem;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    font-size: 16px;
+  }
 `;
 
-export const Div1 = styled.div`
-  grid-area: 1 / 1 / 2 / 2;
+export const Nav = styled.nav`
   display: flex;
-  flex-direction: row;
-  align-content: center;
-  @media ${(props) => props.theme.breakpoints.sm} {
-    grid-area: 1 / 1 / 2 / 3;
-  }
-`;
-export const Div2 = styled.div`
-  grid-area: 1 / 2 / 2 / 4;
-  display: flex;
-  justify-content: space-around;
-  @media ${(props) => props.theme.breakpoints.sm} {
-    grid-area: 2 / 2 / 3 / 5;
-  }
-`;
-export const Div3 = styled.div`
-  grid-area: 1 / 5 / 2 / 6;
-  display: flex;
-  justify-content: space-around;
   align-items: center;
-  @media ${(props) => props.theme.breakpoints.sm} {
+
+  ul {
+    display: flex;
     align-items: center;
-    grid-area: 1 / 4 / 2 / 6;
-  }
-`;
-
-// Navigation Links
-export const NavLink = styled.a`
-  font-size: 2rem;
-  line-height: 32px;
-  color: rgba(255, 255, 255, 0.75);
-  transition: 0.4s ease;
-  &:hover {
-    color: #fff;
-    opacity: 1;
-    cursor: pointer;
-  }
-  @media ${(props) => props.theme.breakpoints.sm} {
-    padding: 0.5rem;
-  }
-`;
-
-/// DropDown Contact
-export const ContactDropDown = styled.button`
-  border: none;
-  display: flex;
-  position: relative;
-  background: none;
-  font-size: 1.7rem;
-
-  line-height: 32px;
-  color: rgba(255, 255, 255, 0.75);
-  cursor: pointer;
-  transition: 0.3s ease;
-
-  &:focus {
-    outline: none;
-  }
-  &:hover {
-    color: #fff;
+    gap: 8px;
   }
 
-  @media ${(props) => props.theme.breakpoints.sm} {
-    padding: 0.4rem 0;
-  }
   @media ${(props) => props.theme.breakpoints.md} {
-    padding: 0;
+    order: 3;
+    width: 100%;
+    justify-content: center;
+
+    ul {
+      gap: 2px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 `;
 
-export const NavProductsIcon = styled(IoIosArrowDropdown)`
-  margin-left: 8px;
-  display: flex;
-  align-self: center;
+export const NavLink = styled(Link)`
+  display: inline-block;
+  font-size: 15px;
+  color: ${(props) => props.theme.colors.textMuted};
+  padding: 8px 14px;
+  border-radius: ${(props) => props.theme.radii.pill};
   transition: 0.3s ease;
-  opacity: ${({ isOpen }) => (isOpen ? '1' : '.75')};
-  transform: ${({ isOpen }) => (isOpen ? 'scaleY(-1)' : 'scaleY(1)')};
+  cursor: pointer;
 
   &:hover {
-    opacity: 1;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.06);
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    margin: 2px 0 0 2px;
-    width: 15px;
+    font-size: 12px;
+    padding: 6px 9px;
   }
 `;
 
-// Social Icons
+export const SocialRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+`;
 
 export const SocialIcons = styled.a`
-  transition: 0.3s ease;
-  color: white;
-  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: ${(props) => props.theme.colors.textMuted};
+  border-radius: 50%;
   padding: 8px;
+  transition: 0.3s ease;
+
   &:hover {
-    background-color: #212d45;
-    transform: scale(1.2);
-    cursor: pointer;
+    color: #fff;
+    background-color: ${(props) => props.theme.colors.surface2};
+    transform: scale(1.1);
   }
 `;

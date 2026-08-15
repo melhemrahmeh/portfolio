@@ -1,38 +1,41 @@
 import React from 'react';
 
 import {
+  Eyebrow,
   Section,
   SectionDivider,
+  SectionText,
   SectionTitle,
 } from '../../styles/GlobalComponents';
-import { Box, Boxes, BoxNum, BoxText } from './AcomplishmentsStyles';
+import { Box, BoxNum, BoxText, Boxes } from './AcomplishmentsStyles';
 
 const data = [
-  {
-    number: 'Job',
-    text: 'Land a Full time dev job in my junior year',
-  },
-  { number: 'Honor List', text: 'Placed on the Deans Honor List at AUB' },
-  { number: 'Scholarship', text: 'Full scholarship covered by USAID.' },
-  { number: '2x AWS', text: 'Earned 2 AWS certifications' },
-  { number: 'CKA', text: 'Earned the Certified Kubernetes Administrator' },
-  { number: 'DevOps', text: '2+ years of DevOps experience' },
-  { number: '3+', text: 'Years of Software Development Experience' },
-  { number: '4', text: 'Languages Spoken (English, Arabic, French, Greek)' },
+  { number: '4+', text: 'Years building software and infrastructure' },
+  { number: '10M+', text: 'Daily requests served by gateways I run' },
+  { number: '300+', text: 'APIs migrated to Envoy Gateway' },
+  { number: '99.999%', text: 'Availability on a multi-cloud banking platform' },
+  { number: '1,500+', text: 'Support tickets resolved at Murex' },
+  { number: '4x', text: 'Cloud certifications (CKA + 3 AWS)' },
+  { number: 'USAID', text: 'Full scholarship — 1 of 60 students in Lebanon' },
+  { number: '4', text: 'Languages spoken (English, Arabic, French, Greek)' },
 ];
 
 const Acomplishments = () => (
-  <Section>
-    <SectionTitle>Personal Achievements</SectionTitle>
+  <Section id="achievements">
+    <SectionDivider />
+    <Eyebrow>By the numbers</Eyebrow>
+    <SectionTitle>Achievements</SectionTitle>
+    <SectionText>
+      A few things worth measuring from the last four years.
+    </SectionText>
     <Boxes>
-      {data.map((card, index) => (
-        <Box key={index}>
-          <BoxNum>{`${card.number}`}</BoxNum>
+      {data.map((card) => (
+        <Box key={card.number}>
+          <BoxNum>{card.number}</BoxNum>
           <BoxText>{card.text}</BoxText>
         </Box>
       ))}
     </Boxes>
-    <SectionDivider />
   </Section>
 );
 

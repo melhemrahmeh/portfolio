@@ -1,61 +1,214 @@
+export const profile = {
+  name: 'Melhem Rahmeh',
+  role: 'DevOps Engineer',
+  company: 'FxPro',
+  location: 'Limassol, Cyprus',
+  email: 'melhem.rahmehh@gmail.com',
+  phone: '+357 96176803',
+  phoneHref: 'tel:+35796176803',
+  github: 'https://github.com/melhemrahmeh',
+  linkedin: 'https://www.linkedin.com/in/melhem-rahmeh/',
+  site: 'https://melhemrahmeh.com',
+  resume: '/Melhem-Rahmeh-Resume.pdf',
+};
+
 export const experience = [
   {
     title: 'DevOps Engineer',
-    company: 'FXPro',
+    company: 'FxPro',
+    location: 'Limassol, Cyprus',
     image: '/images/fx.png',
     date: 'September 2025 - Present',
-    description: 'Doing DevOps stuff, wish me luck in this new role!',
-    tags: ['AWS', 'Linux', 'Docker', 'Kubernetes', 'Java'],
+    current: true,
+    highlights: [
+      {
+        label: 'Multi-Cloud Kubernetes Orchestration',
+        text: 'Managed the full deployment of a corporate banking project on AWS and Azure from scratch, using Terraform, Kubernetes, AWS RDS, and API Gateway while maintaining 99.999% service availability.',
+      },
+      {
+        label: 'AWS Infrastructure & Automation',
+        text: "Primary engineer responsible for the company's AWS infrastructure, refactoring and re-architecting it with Terraform and automating the full API deployment lifecycle, eliminating manual intervention and standardizing infrastructure-as-code practices across the organization.",
+      },
+      {
+        label: 'Envoy Gateway Migration',
+        text: 'Migrated 30+ services including corporate websites from Kubernetes Ingress to Envoy Gateway across 4 clusters (2 AKS and 2 on-prem), serving 10+ million requests per day. Separately migrated 300+ externally exposed APIs from Kong Gateway to Envoy Gateway to unify the API gateway layer.',
+      },
+      {
+        label: 'VCS Migration',
+        text: 'Executed a high-impact migration of all repositories from Bitbucket to GitLab, adjusting their CI processes, centralizing the codebase to improve security and standardizing CI/CD workflows for an entire department.',
+      },
+      {
+        label: 'Global Mobile Delivery Framework',
+        text: 'Developed custom deployment scripts to automate app distribution across Google Play, the App Store, and RuStore.',
+      },
+      {
+        label: 'Operational Excellence',
+        text: 'Enforced industry best practices across the stack — modular Terraform code, reusable Ansible playbooks, and secure Jenkins pipelines — while collaborating daily with different development teams.',
+      },
+    ],
+    tags: [
+      'Terraform',
+      'Kubernetes',
+      'AWS',
+      'Azure',
+      'Envoy Gateway',
+      'GitLab CI',
+      'Ansible',
+      'Jenkins',
+    ],
     id: 0,
   },
   {
     title: 'DevOps Engineer',
     company: 'Murex',
+    location: 'Nicosia, Cyprus',
     image: '/images/murex.png',
     date: 'June 2023 - September 2025',
-    description:
-      'Troubleshooting across Unix/Linux environments and became proficient with Sybase, PostgreSQL, MSSQL, and Oracle databases as well as debugging Java & Angular codebases.\nActively engaged in a Scaled Agile Framework, participating in PI planning and bi-weekly feature demos.\nAutomate operations center debugging tasks, using Java, which reduced the workload by 30%.\nUtilized an internal ticketing system to support an internal tool used by more than 2000 employees and its foundational infrastructure and core servers spanning on-premises, Azure, and AWS. This system was crucial for developers, quality assurance, and release management teams to streamline building, deploying, and testing of MX.3 versions.\nCreated Jenkins pipelines, Ansible playbooks, and Shell Scripts, ensuring automation of repetitive tasks and recurrent client challenges, leading to significant time savings.\nExecuted comprehensive troubleshooting across 4 Linux distributions (Rhel, Ubuntu,CentOS, Solaris) and database architectures (Sybase, Oracle, MSSQL, PostgreSQL) to improve platform reliability.\nCollaborated across 3 teams to support the development, enhancement, and maintenance of an automation framework of testing, compilation, and deployment of the Murex application.\nTechnical Support: Resolved over 1,000 support tickets this year through an internal ticketing system, providing support for tools used by over 2,000 employees and managing infrastructure across on-premises, Azure, and AWS.\nDeveloped comprehensive Splunk dashboards, monitors, and alerts for real-time data analysis and system monitoring.\nAuthored complex, efficient SQL queries, optimizing database performance and data retrieval processes.',
-    tags: ['Docker', 'Databases', 'Kubernetes', 'Linux', 'Java'],
+    highlights: [
+      {
+        label: 'Automation Framework Operations',
+        text: 'Collaborated across 3 teams to support the development, upgrades, and maintenance of an automation framework for testing, compilation, and deployment of the Murex application.',
+      },
+      {
+        label: 'CI/CD Innovation',
+        text: 'Implemented advanced CI/CD pipelines using Helm charts, Kubernetes, Docker, Nexus, and Jenkins, with security measures including artifact vulnerability scanning and access control.',
+      },
+      {
+        label: 'Kubernetes Runtime',
+        text: 'Designed a runtime environment for automated tests in HA/elastic mode, supporting 100+ daily deployments in the official Murex test validation process across 10+ Kubernetes clusters.',
+      },
+      {
+        label: 'Incident Recovery',
+        text: 'Designed and implemented a self-healing and automated incident recovery system for a production environment serving 2,000+ users, enabling automatic issue detection, service restart, user notification, and system cleanup.',
+      },
+      {
+        label: 'Automation Excellence',
+        text: "Accelerated processing speeds by 15x for critical operations, reducing a task's response time from two hours to eight minutes.",
+      },
+      {
+        label: 'Technical Support',
+        text: 'Resolved over 1,500 technical tickets involving deployment issues, bugs, and exceptions for tools used by 2,000+ employees, managing infrastructure across on-premises, Azure, and AWS.',
+      },
+      {
+        label: 'Innovation & Mentoring',
+        text: 'Introduced ArgoCD, Python, and OpenTelemetry into the team CI/CD workflows, built reusable Jenkins shared libraries, and mentored two new team members on tooling and support best practices.',
+      },
+    ],
+    tags: [
+      'Kubernetes',
+      'Helm',
+      'Jenkins',
+      'Docker',
+      'ArgoCD',
+      'Ansible',
+      'Python',
+      'Splunk',
+    ],
     id: 1,
   },
   {
     title: 'System Analyst',
     company: 'Maids.cc',
+    location: 'Remote to Dubai, UAE',
     image: '/images/maids.png',
-    date: 'Nov 2022 - May 2023',
-    description:
-      "System analyst on the Accounting and Money Collection modules in the company's ERP and supported the refunds and money collection process.\nLed the integration and optimization of these modules, ensuring efficient workflows and data consistency.\nCollaborated closely with the finance and client relations teams to ensure modules met the needs of the business.\nUtilized advanced SQL skills for data correction, generating insightful reports, and gathering critical data to support internal project initiatives, thereby contributing to informed decision-making and strategic planning.",
-    tags: ['React JS', 'Flutter', 'Firebase', 'SQL Server', 'Azure'],
+    date: 'November 2022 - May 2023',
+    highlights: [
+      {
+        label: 'ERP System Enhancement',
+        text: 'Led testing and upgrades of the company Accounting and Money Collection modules to improve efficiency across the release lifecycle. Provided L1 technical support to 5 teams, supporting over 30 employees.',
+      },
+      {
+        label: 'Data Automation',
+        text: 'Created SQL and Python-based data validation tools used by analysts to identify production data discrepancies faster, reducing manual correction efforts by 30%.',
+      },
+    ],
+    tags: ['SQL Server', 'Python', 'ERP', 'Data Validation', 'Azure'],
     id: 2,
   },
   {
-    title: 'Full Stack Software Engineer',
+    title: 'Software Engineer',
     company: 'Asset Science LLC',
+    location: 'Beirut, Lebanon',
     image: '/images/asci.jpg',
-    date: 'June 2022 - Nov 2022',
-    description:
-      'Worked with a team of professional software developers where I was involved in a complete Agile SDLC lifestyle on designing, coding, debugging, and testing computer systems and desktop applications.\nWorked with React JS, Electron JS, and C++ for desktop application development, with various tools such as Chart.js, Redux, Flask, Bitbucket pipelines and JQL.',
-    tags: ['React JS', 'Django', 'MySQL'],
+    date: 'June 2022 - November 2022',
+    highlights: [
+      {
+        label: 'Application Engineering',
+        text: 'Built robust desktop and web applications following an Agile development lifecycle, applying a diverse technology stack across 2 teams including React JS, Electron JS, and Java.',
+      },
+      {
+        label: 'Tooling',
+        text: 'Worked with Chart.js, Redux, Flask, and Bitbucket pipelines to ship and maintain production features.',
+      },
+    ],
+    tags: ['React JS', 'Electron JS', 'Java', 'C++', 'Redux', 'Agile'],
     id: 3,
   },
   {
-    title: 'Full Stack Software Engineer Intern',
+    title: 'Full Stack Engineer (Intern)',
     company: 'EduPass NGO',
+    location: 'Beirut, Lebanon',
     image: '/images/edupass.png',
     date: 'June 2022',
-    description:
-      'Developed a full website for EduPass NGO, in 30 days, using the following stack ReactJS and Django.',
-    tags: ['PostgreSQL', 'Express', 'React JS', 'Node JS'],
+    highlights: [
+      {
+        label: 'Website Delivery',
+        text: 'Developed a complete website for EduPass NGO in 30 days using React JS and Django.',
+      },
+    ],
+    tags: ['React JS', 'Django', 'PostgreSQL'],
     id: 4,
   },
   {
-    title: 'Full Stack Software Engineer Intern',
-    company: 'Bennett & Ranvile',
+    title: 'Front End Engineer (Intern)',
+    company: 'Bennett & Ranville',
+    location: 'Remote',
     image: '/images/bennett_ranville_cover.jpg',
     date: 'April 2022 - May 2022',
-    description:
-      'Worked in an Agile environment, as a React JS Developer for a healthcare management project. Developed the website using React JS and AWS Lambda.\nBuilt a CI/CD pipeline to deploy the website using GitHub Actions on Azure Static Apps.',
-    tags: ['Python', 'Machine Learning', 'Reddit API', 'MongoDB'],
+    highlights: [
+      {
+        label: 'Healthcare Platform',
+        text: 'Worked in an Agile environment as a React JS developer on a healthcare management project, building the website with React JS and AWS Lambda.',
+      },
+      {
+        label: 'Delivery Pipeline',
+        text: 'Built a CI/CD pipeline to deploy the website using GitHub Actions on Azure Static Web Apps.',
+      },
+    ],
+    tags: ['React JS', 'AWS Lambda', 'GitHub Actions', 'Azure'],
+    id: 5,
+  },
+];
+
+export const certifications = [
+  {
+    name: 'Certified Kubernetes Administrator',
+    issuer: 'The Linux Foundation',
+    id: 0,
+  },
+  {
+    name: 'AWS Certified Developer – Associate',
+    issuer: 'Amazon Web Services',
+    id: 1,
+  },
+  {
+    name: 'AWS Certified Cloud Practitioner',
+    issuer: 'Amazon Web Services',
+    id: 2,
+  },
+  {
+    name: 'AWS Certified AI Practitioner',
+    issuer: 'Amazon Web Services',
+    id: 3,
+  },
+  {
+    name: 'Infrastructure & Systems Expert',
+    issuer: 'AlgoExpert — 100+ infrastructure and system design problems',
+    id: 4,
+  },
+  {
+    name: 'AlgoExpert Certification',
+    issuer: 'AlgoExpert — 100+ algorithm and data structure problems',
     id: 5,
   },
 ];
@@ -64,68 +217,39 @@ export const projects = [
   {
     title: 'IvarGrand',
     description:
-      'Freelance Project, build a website for a company in dubai that sells car diesel oils.',
+      'Freelance project: a marketing website for a Dubai-based company selling car diesel oils, built from scratch and deployed on Netlify.',
     image: '/images/ivar.PNG',
-    tags: ['HTML', 'CSS', 'Javascript', 'Netlify', 'Github'],
+    tags: ['HTML', 'CSS', 'JavaScript', 'Netlify'],
     source: 'https://github.com/melhemrahmeh/ivargrand',
     visit: 'https://ivargrand.com/',
     id: 1,
   },
   {
-    title: 'Cryptonite',
-    description:
-      'Cryptonite is an envisioned online digital platform serving as a social networking tool linking traders with crypto experts. ',
-    image: '/images/cryptonite.PNG',
-    tags: ['React JS', 'Flutter', 'Firebase', 'SQL Server', 'Azure'],
-    source: 'https://github.com/melhemrahmeh/myclinic253',
-    visit: 'https://cryptonite-278.netlify.app/',
-    id: 2,
-  },
-  {
-    title: 'My Clinic',
-    description:
-      'Using React JS, Django , and MySQL, I build MyClinic,a web application to helps you organize dentist visits from the comfort of your home. We aim to help you book your appointments, view your operations, prices, and after visit summaries, and contact your clinic for any assistance.',
-    image: '/images/myclinic.png',
-    tags: ['React JS', 'Django', 'MySQL'],
-    source: 'https://github.com/melhemrahmeh/myclinic253',
-    visit: 'https://cmps253-dentist2.netlify.app/',
-    id: 3,
-  },
-  {
-    title: 'Restaurants Databases Management System',
-    description:
-      'This project aims at building a database system to help the restaurant manager to manage the restaurant more effectively by computerizing meal ordering, billing, and inventory control.',
-    image: '/images/restaurant.png',
-    tags: ['PostgreSQL', 'Express', 'React JS', 'Node JS'],
-    source: 'https://google.com',
-    visit: 'https://google.com',
-    id: 4,
-  },
-  {
     title: 'Reddit Bot Detection System',
     description:
-      'Bot accounts have been a significant problem for social media websites especially Twitter and Reddit, most bots are harmful and they seek to generate useless content on popular social media channels. Our solution is a set of different machine learning models that performs Reddit bot detection on different sets of data about the users.',
+      'Bots generate a large share of low-value content on social platforms. This project trains a set of machine learning models that perform Reddit bot detection across different feature sets built from user activity.',
     image: '/images/reddit.png',
     tags: ['Python', 'Machine Learning', 'Reddit API', 'MongoDB'],
     source: 'https://github.com/melhemrahmeh/reddit_bot_detection',
-    visit: 'https://github.com/melhemrahmeh/reddit_bot_detection',
+    visit: null,
     id: 5,
   },
   {
-    title: 'CourSeera, AUB Courses Query System',
+    title: 'CourSeera — AUB Course Query System',
     description:
-      'A program that downloads then parses all 26 files containing all the courses taught for the current semester at the American University of Beirut, then build an in-memory database with all the courses, then allow the user to query the database using command line interface and a Telegram Bot.',
+      'Downloads and parses all 26 files listing the courses taught in the current semester at the American University of Beirut, builds an in-memory database, and exposes it through a CLI and a Telegram bot.',
     image: '/images/courseera.png',
     tags: ['Java', 'Maven', 'JUnit', 'Telegram Bot API'],
     source: 'https://github.com/melhemrahmeh/CourseeraFactory',
-    visit: 'https://github.com/melhemrahmeh/CourseeraFactory',
+    visit: null,
     id: 6,
   },
   {
     title: 'Random Fact Generator',
-    description: 'A program that generates random facts using external APIs.',
+    description:
+      'A small single-page app that pulls and displays random facts from external APIs.',
     image: '/images/randomfact.png',
-    tags: ['React JS', 'Vite', 'Pnpm', 'OANDA API'],
+    tags: ['React JS', 'Vite', 'pnpm'],
     source: 'https://github.com/melhemrahmeh/random-fact-generator',
     visit: 'https://randomlytrue.netlify.app/',
     id: 7,
@@ -133,9 +257,9 @@ export const projects = [
   {
     title: 'Currency Converter',
     description:
-      'A program that converts money amounts from 2 different currencies.',
+      'Converts amounts between currencies using live exchange rates from the OANDA API.',
     image: '/images/money.png',
-    tags: ['React JS', 'Vite', 'Pnpm', 'OANDA API'],
+    tags: ['React JS', 'Vite', 'OANDA API'],
     source: 'https://github.com/melhemrahmeh/currency-converter',
     visit: 'https://moneyconvert.netlify.app/',
     id: 8,
@@ -143,9 +267,9 @@ export const projects = [
   {
     title: 'Quiz Cloud',
     description:
-      'A program that contains questions and answers for several Cloud Online exams.',
+      'A practice app containing questions and answers for several cloud certification exams.',
     image: '/images/quiz.png',
-    tags: ['React JS', 'Vite', 'Pnpm', 'OANDA API'],
+    tags: ['React JS', 'Vite', 'pnpm'],
     source: 'https://github.com/melhemrahmeh/quizcloud',
     visit: 'https://quizcloud-test.netlify.app/',
     id: 9,
@@ -155,26 +279,30 @@ export const projects = [
 export const TimeLineData = [
   {
     year: 2019,
-    text: 'Wrote my first line of code in C++, Got Accepted into the USAID scholarship at AUB.',
+    text: 'Wrote my first line of code in C++ and was accepted into the USAID scholarship at AUB.',
   },
   {
     year: 2020,
-    text: 'Started my Python and Django Learning Journey, and completed my first website using vanilla Javascript and Django',
+    text: 'Started my Python and Django journey, and completed my first website using vanilla JavaScript and Django.',
   },
   {
     year: 2021,
-    text: 'Started my Java & Problem Solving Journey. First year computer science student. ',
+    text: 'Started my Java and problem-solving journey as a first-year computer science student.',
   },
   {
     year: 2022,
-    text: 'Build a solid knowledge of React JS, Node JS and Machine Learning, and landed my first internship as a Front End Developer, then my first job as a Full Time Software Engineer',
+    text: 'Built solid knowledge of React JS, Node JS, and machine learning, landed my first internship as a front-end developer, then my first full-time software engineering role.',
   },
   {
     year: 2023,
-    text: 'Landed a DevOps Engineer role at Murex. Constantly improving in the domains of infrastruce engineering and software solutions.',
+    text: 'Moved to Cyprus and joined Murex as a DevOps Engineer, going deep on Kubernetes, CI/CD, and infrastructure engineering.',
   },
   {
     year: 2025,
-    text: 'Earned 2 AWS Certifications and the Certified Kubernetes Administrator.',
+    text: 'Earned the CKA and three AWS certifications, then joined FxPro in Limassol to own AWS infrastructure and multi-cloud Kubernetes platforms.',
+  },
+  {
+    year: 2026,
+    text: 'Running Terraform-managed multi-cloud infrastructure and an Envoy Gateway layer serving 10+ million requests per day.',
   },
 ];

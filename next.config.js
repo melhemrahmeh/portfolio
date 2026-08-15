@@ -4,9 +4,13 @@ const nextConfig = {
   images: {
     unoptimized: true, // Required for static export
   },
-  // Optional: Enable styled-components if you use them
   compiler: {
     styledComponents: true,
+  },
+  turbopack: {
+    // Pin the workspace root: an unrelated pnpm-lock.yaml sits one directory up,
+    // which Turbopack would otherwise try to infer the workspace root from.
+    root: __dirname,
   },
 };
 
