@@ -32,7 +32,10 @@ const metrics = [
 
 /* Non-numeric credentials live outside the metric grid. */
 const notes = [
-  { icon: <FiAward size="1rem" />, text: 'CKA + 3 AWS certifications' },
+  {
+    icon: <FiAward size="1rem" />,
+    text: 'CKA · 3x AWS · 3x AlgoExpert certified',
+  },
   {
     icon: <FiStar size="1rem" />,
     text: 'USAID full scholarship — 1 of 60 in Lebanon',

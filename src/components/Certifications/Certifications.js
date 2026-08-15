@@ -1,11 +1,12 @@
 import React from 'react';
 import { SiAmazonwebservices, SiKubernetes } from 'react-icons/si';
-import { FiCode } from 'react-icons/fi';
+import { FiCode, FiExternalLink, FiLayers, FiServer } from 'react-icons/fi';
 import { IoSchoolOutline } from 'react-icons/io5';
 
 import {
   CertBody,
   CertIssuer,
+  CertLink,
   CertList,
   CertMark,
   CertName,
@@ -13,6 +14,7 @@ import {
   EducationCard,
   EducationIcon,
   EducationText,
+  VerifyIcon,
 } from './CertificationsStyles';
 import {
   Eyebrow,
@@ -23,17 +25,13 @@ import {
 import Reveal from '../Reveal/Reveal';
 import { certifications } from '../../constants/constants';
 
-/** Brand marks keyed off the issuer, with each vendor's own colour. */
+/** Vendor marks in their own brand colours, keyed off `kind`. */
 const marks = {
   kubernetes: { icon: <SiKubernetes size="1.25rem" />, color: '#326CE5' },
   aws: { icon: <SiAmazonwebservices size="1.25rem" />, color: '#FF9900' },
-  algoexpert: { icon: <FiCode size="1.15rem" />, color: '#13ADC7' },
-};
-
-const markFor = (cert) => {
-  if (cert.name.includes('Kubernetes')) return marks.kubernetes;
-  if (cert.name.startsWith('AWS')) return marks.aws;
-  return marks.algoexpert;
+  infra: { icon: <FiServer size="1.15rem" />, color: '#13ADC7' },
+  systems: { icon: <FiLayers size="1.15rem" />, color: '#945DD6' },
+  algo: { icon: <FiCode size="1.15rem" />, color: '#F46737' },
 };
 
 const Certifications = () => (
@@ -43,7 +41,7 @@ const Certifications = () => (
       <SectionTitle>Certifications</SectionTitle>
       <SectionText>
         Formal proof of the things I work on daily — Kubernetes, AWS, and system
-        design.
+        design. Every credential below links to its verification page.
       </SectionText>
     </Reveal>
 
@@ -63,16 +61,26 @@ const Certifications = () => (
 
       <CertList>
         {certifications.map((cert) => {
-          const mark = markFor(cert);
+          const mark = marks[cert.kind] ?? marks.algo;
           return (
             <CertRow key={cert.id}>
-              <CertMark $color={mark.color} aria-hidden="true">
-                {mark.icon}
-              </CertMark>
-              <CertBody>
-                <CertName>{cert.name}</CertName>
-                <CertIssuer>{cert.issuer}</CertIssuer>
-              </CertBody>
+              <CertLink
+                href={cert.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Verify ${cert.name} (opens in a new tab)`}
+              >
+                <CertMark $color={mark.color} aria-hidden="true">
+                  {mark.icon}
+                </CertMark>
+                <CertBody>
+                  <CertName>{cert.name}</CertName>
+                  <CertIssuer>{cert.issuer}</CertIssuer>
+                </CertBody>
+                <VerifyIcon aria-hidden="true">
+                  <FiExternalLink size="1rem" />
+                </VerifyIcon>
+              </CertLink>
             </CertRow>
           );
         })}

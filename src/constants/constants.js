@@ -177,36 +177,59 @@ export const experience = [
   },
 ];
 
+/**
+ * `url` points at the public verification page for each credential — Credly
+ * for the vendor certs, certificate.algoexpert.io for the AlgoExpert ones.
+ */
 export const certifications = [
   {
     name: 'Certified Kubernetes Administrator',
-    issuer: 'The Linux Foundation',
+    issuer: 'The Linux Foundation · CNCF',
+    kind: 'kubernetes',
+    url: 'https://www.credly.com/badges/dc74b089-66e4-4498-b695-1666b6b808c9',
     id: 0,
   },
   {
     name: 'AWS Certified Developer – Associate',
     issuer: 'Amazon Web Services',
+    kind: 'aws',
+    url: 'https://www.credly.com/badges/3f8586bd-2706-4a05-80ae-3d03bf352192',
     id: 1,
   },
   {
     name: 'AWS Certified Cloud Practitioner',
     issuer: 'Amazon Web Services',
+    kind: 'aws',
+    url: 'https://www.credly.com/badges/02046aee-e61e-424f-b849-0d8e741c5f9b',
     id: 2,
   },
   {
     name: 'AWS Certified AI Practitioner',
     issuer: 'Amazon Web Services',
+    kind: 'aws',
+    url: 'https://www.credly.com/badges/8f527dfc-9fba-40d0-9635-a4915ffd7347',
     id: 3,
   },
   {
-    name: 'Infrastructure & Systems Expert',
-    issuer: 'AlgoExpert — 100+ infrastructure and system design problems',
+    name: 'InfraExpert',
+    issuer: 'AlgoExpert — 100+ infrastructure problems',
+    kind: 'infra',
+    url: 'https://certificate.algoexpert.io/InfraExpert%20Certificate%20IE-eaf1ad1dbb',
     id: 4,
   },
   {
-    name: 'AlgoExpert Certification',
-    issuer: 'AlgoExpert — 100+ algorithm and data structure problems',
+    name: 'SystemsExpert',
+    issuer: 'AlgoExpert — 100+ system design problems',
+    kind: 'systems',
+    url: 'https://certificate.algoexpert.io/SystemsExpert%20Certificate%20SE-5756e2acf8',
     id: 5,
+  },
+  {
+    name: 'AlgoExpert',
+    issuer: 'AlgoExpert — 100+ algorithm and data structure problems',
+    kind: 'algo',
+    url: 'https://certificate.algoexpert.io/AlgoExpert%20Certificate%20AE-3371a6113f',
+    id: 6,
   },
 ];
 

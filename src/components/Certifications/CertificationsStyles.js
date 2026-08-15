@@ -85,11 +85,15 @@ export const CertList = styled.ul`
 `;
 
 export const CertRow = styled.li`
+  border-bottom: 1px solid ${(props) => props.theme.colors.border};
+`;
+
+/** The whole row is the verification link. */
+export const CertLink = styled.a`
   display: flex;
   align-items: center;
   gap: 16px;
   padding: 16px 4px;
-  border-bottom: 1px solid ${(props) => props.theme.colors.border};
   transition: 0.25s ease;
 
   &:hover {
@@ -99,6 +103,30 @@ export const CertRow = styled.li`
   @media ${(props) => props.theme.breakpoints.sm} {
     gap: 12px;
     padding: 13px 2px;
+  }
+`;
+
+/** Verify affordance: hidden until the row is hovered or keyboard-focused. */
+export const VerifyIcon = styled.span`
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding-left: 12px;
+  color: ${(props) => props.theme.colors.cyan};
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: 0.25s ease;
+
+  ${CertLink}:hover &,
+  ${CertLink}:focus-visible & {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* No hover on touch — keep it permanently visible there. */
+  @media (hover: none) {
+    opacity: 0.55;
+    transform: none;
   }
 `;
 
